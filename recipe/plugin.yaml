@@ -1,0 +1,17 @@
+plugin:
+    name: 'recipe.recipe::lang.plugin.name'
+    description: 'recipe.recipe::lang.plugin.description'
+    author: 'Natwar Singh'
+    icon: oc-icon-adjust
+    homepage: ''
+navigation:
+    main-menu-recipe:
+        label: Recipes
+        url: recipe/recipe/recipes
+        icon: icon-cutlery
+        permissions:
+            - manage_recipe
+permissions:
+    manage_recipe:
+        tab: 'recipe.recipe::lang.plugin.name'
+        label: 'Manage Recipe'

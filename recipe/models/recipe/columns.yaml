@@ -1,0 +1,13 @@
+columns:
+    title:
+        label: title
+        type: text
+    time:
+        label: time
+        type: text
+    serve:
+        label: serve
+        type: number
+    rating:
+        label: rating
+        type: text

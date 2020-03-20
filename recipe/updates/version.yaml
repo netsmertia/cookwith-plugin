@@ -1,0 +1,14 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table recipe_recipe_recipe'
+    - builder_table_create_recipe_recipe_recipe.php
+1.0.3:
+    - 'Updated table recipe_recipe_recipe'
+    - builder_table_update_recipe_recipe_recipe.php
+1.0.4:
+    - 'Updated table recipe_recipe_recipe'
+    - builder_table_update_recipe_recipe_recipe_2.php
+1.0.5:
+    - 'Updated table recipe_recipe_recipe'
+    - builder_table_update_recipe_recipe_recipe_3.php

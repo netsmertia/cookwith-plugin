@@ -1,0 +1,10 @@
+name: Recipes
+form: $/recipe/recipe/models/recipe/fields.yaml
+modelClass: recipe\Recipe\Models\Recipe
+defaultRedirect: recipe/recipe/recipes
+create:
+    redirect: 'recipe/recipe/recipes/update/:id'
+    redirectClose: recipe/recipe/recipes
+update:
+    redirect: recipe/recipe/recipes
+    redirectClose: recipe/recipe/recipes
