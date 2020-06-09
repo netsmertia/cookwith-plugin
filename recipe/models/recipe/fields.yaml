@@ -15,30 +15,54 @@ fields:
         span: auto
         default: '1'
         type: text
-    ingredients:
-        label: Ingradients
-        span: auto
-        size: huge
-        type: richeditor
-    recipe:
-        label: Recipe
-        span: auto
-        size: huge
-        type: richeditor
-    img:
-        label: 'Cover Image'
-        span: full
-        useCaption: true
-        type: fileupload
-        mode: image
-        imageHeight: 260
-        imageWidth: 260
-        thumbOptions:
-            mode: crop
-            offset:
-                - 0
-                - 0
-            quality: 90
-            sharpen: 0
-            interlace: false
-            extension: auto
+tabs:
+    fields:
+        ingredients:
+            tab: Ingredients
+            label: Ingradients
+            span: full
+            type: repeater
+            prompt: "Add Ingredient"
+            minItems: 1
+            form: 
+                fields:
+                    ingredient_name:
+                        label: Ingredient Name
+                        type: text
+                        span: col-xs-4
+                        cssClass: col-xs-4
+                    ingredient_volume:
+                        label: Ingredient Volume
+                        span: col-xs-4
+                        type: text
+                        cssClass: col-xs-4
+                        placeholder: 400
+                    volume_unit:
+                        label: Volume Unit
+                        span: col-xs-4
+                        type: text
+                        cssClass: col-xs-4
+                        placeholder: grams / pieces / cup / cloves etc.
+        recipe:
+            tab: Reipce
+            label: Recipe
+            span: full
+            size: huge
+            type: richeditor
+        img:
+            label: 'Cover Image'
+            span: full
+            useCaption: true
+            type: fileupload
+            mode: image
+            imageHeight: 260
+            imageWidth: 260
+            thumbOptions:
+                mode: crop
+                offset:
+                    - 0
+                    - 0
+                quality: 90
+                sharpen: 0
+                interlace: false
+                extension: auto
