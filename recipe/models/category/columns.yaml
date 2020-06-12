@@ -1,0 +1,30 @@
+columns:
+    id:
+        label: Id
+        type: number
+        invisible: true
+    category_title:
+        label: 'recipe.recipe::lang.category.title'
+        type: text
+        sortable: true
+    category_slug:
+        label: 'recipe.recipe::lang.category.slug'
+        type: text
+        sortable: true
+    description:
+        label: 'recipe.recipe::lang.category.description'
+        type: text
+        invisible: true
+        sortable: false
+    created_at:
+        label: 'recipe.recipe::lang.record.created_at'
+        type: datetime
+        invisible: true
+    updated_at:
+        label: 'recipe.recipe::lang.record.updated_at'
+        type: datetime
+        invisible: true
+    deleted_at:
+        label: 'recipe.recipe::lang.record.deleted_at'
+        type: datetime
+        invisible: true

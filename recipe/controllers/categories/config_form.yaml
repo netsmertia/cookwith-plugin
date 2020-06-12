@@ -1,0 +1,10 @@
+name: Categories
+form: $/recipe/recipe/models/category/fields.yaml
+modelClass: recipe\Recipe\Models\Category
+defaultRedirect: recipe/recipe/categories
+create:
+    redirect: 'recipe/recipe/categories/update/:id'
+    redirectClose: recipe/recipe/categories
+update:
+    redirect: recipe/recipe/categories
+    redirectClose: recipe/recipe/categories

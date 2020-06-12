@@ -4,14 +4,31 @@ plugin:
     author: 'Natwar Singh'
     icon: oc-icon-adjust
     homepage: ''
+    category: 'CWS Recipe'
 navigation:
-    main-menu-recipe:
+    main-recipes:
         label: Recipes
         url: recipe/recipe/recipes
         icon: icon-cutlery
         permissions:
             - manage_recipe
+        sideMenu:
+            recipes:
+                label: 'recipe.recipe::lang.recipe.recipes'
+                url: recipe/recipe/recipes
+                icon: icon-cutlery
+                permissions:
+                    - manage_recipe
+            categories:
+                label: 'recipe.recipe::lang.category.categories'
+                url: recipe/recipe/categories
+                icon: icon-sitemap
+                permissions:
+                    - categories_view
 permissions:
     manage_recipe:
         tab: 'recipe.recipe::lang.plugin.name'
         label: 'Manage Recipe'
+    categories_view:
+        tab: 'recipe.recipe::lang.category.categories'
+        label: 'recipe.recipe::lang.permission.categories_view'

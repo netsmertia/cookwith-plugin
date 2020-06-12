@@ -3,7 +3,7 @@
 use Backend\Classes\Controller;
 use BackendMenu;
 
-class Recipes extends Controller
+class Categories extends Controller
 {
     public $implement = [        'Backend\Behaviors\ListController',        'Backend\Behaviors\FormController',        'Backend\Behaviors\ReorderController'    ];
     
@@ -12,11 +12,12 @@ class Recipes extends Controller
     public $reorderConfig = 'config_reorder.yaml';
 
     public $requiredPermissions = [
-        'manage_recipe' 
+        'categories_view' 
     ];
+
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('recipe.Recipe', 'main-recipes', 'recipes');
+        BackendMenu::setContext('recipe.Recipe', 'main-recipes', 'categories');
     }
 }

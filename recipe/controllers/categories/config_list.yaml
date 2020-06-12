@@ -1,0 +1,12 @@
+list: $/recipe/recipe/models/category/columns.yaml
+modelClass: recipe\Recipe\Models\Category
+title: Categories
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'recipe/recipe/categories/update/:id'

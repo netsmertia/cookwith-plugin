@@ -12,3 +12,18 @@
 1.0.5:
     - 'Updated table recipe_recipe_recipe'
     - builder_table_update_recipe_recipe_recipe_3.php
+1.0.6:
+    - 'Updated table recipe_recipe_recipe'
+    - builder_table_update_recipe_recipe_recipe_4.php
+1.0.7:
+    - 'Created table recipe_recipe_categories'
+    - builder_table_create_recipe_recipe_categories.php
+1.0.8:
+    - 'Updated table recipe_recipe_recipe'
+    - builder_table_update_recipe_recipe_recipe_5.php
+1.0.9:
+    - 'Created table recipe_recipe_category_recipe'
+    - builder_table_create_recipe_recipe_category_recipe.php
+1.0.10:
+    - 'Updated table recipe_recipe_recipe'
+    - builder_table_update_recipe_recipe_recipe_6.php

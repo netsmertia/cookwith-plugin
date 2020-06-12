@@ -1,0 +1,18 @@
+fields:
+    category_title:
+        label: 'recipe.recipe::lang.category.title'
+        span: auto
+        type: text
+    category_slug:
+        label: 'recipe.recipe::lang.category.slug'
+        span: auto
+        preset:
+            field: category_title
+            type: slug
+        defaultFrom: category_title
+        type: text
+    description:
+        label: 'recipe.recipe::lang.category.description'
+        size: small
+        span: full
+        type: textarea

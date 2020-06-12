@@ -1,0 +1,13 @@
+tabs:
+  fields:
+    youtube:
+      label: Youtube Channel
+      type: text
+      span: auto
+      tab: Social Media
+    facebook:
+      label: Facebook Page
+      type: text
+      span: auto
+      tab: Social Media
+      

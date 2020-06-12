@@ -3,60 +3,83 @@ fields:
         label: Title
         span: full
         type: text
+        required: true
         placeholder: 'My awesome recipe'
     time:
         label: Time
         mode: time
         span: auto
         type: text
+        required: true
         placeholder: '50 Min or 1.30 Hr'
     serve:
         label: Serves
         span: auto
         default: '1'
         type: text
+        required: true
 tabs:
     fields:
+
+        content:
+            label: Content
+            span: auto
+            type: textarea
+            size: small
+            comment: 'This content will be shown at the beginning of recipe.'
+            tab: General
+        categories:
+            label: Categories
+            type: relation
+            nameFrom: category_title
+            required: true
+            span: auto
+            tab: General
         ingredients:
             tab: Ingredients
             label: Ingradients
             span: full
             type: repeater
-            prompt: "Add Ingredient"
+            prompt: 'Add Ingredient'
             minItems: 1
-            form: 
+            style: collapsed
+            form:
                 fields:
                     ingredient_name:
-                        label: Ingredient Name
+                        label: 'Ingredient Name'
                         type: text
                         span: col-xs-4
                         cssClass: col-xs-4
                     ingredient_volume:
-                        label: Ingredient Volume
+                        label: 'Ingredient Volume'
                         span: col-xs-4
                         type: text
                         cssClass: col-xs-4
                         placeholder: 400
                     volume_unit:
-                        label: Volume Unit
+                        label: 'Volume Unit'
                         span: col-xs-4
                         type: text
                         cssClass: col-xs-4
-                        placeholder: grams / pieces / cup / cloves etc.
+                        placeholder: 'grams / pieces / cup / cloves etc.'
         recipe:
             tab: Reipce
             label: Recipe
             span: full
             size: huge
             type: richeditor
+
         img:
             label: 'Cover Image'
-            span: full
+            span: col-xs-4
+            cssClass: col-xs-4
             useCaption: true
+            required: true
             type: fileupload
             mode: image
-            imageHeight: 260
-            imageWidth: 260
+            imageHeight: 100
+            imageWidth: 200
+            tab: Cover
             thumbOptions:
                 mode: crop
                 offset:
@@ -66,3 +89,10 @@ tabs:
                 sharpen: 0
                 interlace: false
                 extension: auto
+        video:
+            label: Video
+            type: text
+            span: col-xs-8
+            cssClass: col-xs-8
+            placeholder: 'https://www.youtube.com/watch?v=2XRprOlz27g'
+            tab: Cover

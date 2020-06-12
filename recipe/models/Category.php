@@ -1,11 +1,12 @@
 <?php namespace recipe\Recipe\Models;
 
 use Model;
+use Recipe\Recipe\Models\Recipe;
 
 /**
  * Model
  */
-class Recipe extends Model
+class Category extends Model
 {
     use \October\Rain\Database\Traits\Validation;
     
@@ -13,28 +14,24 @@ class Recipe extends Model
 
     public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
 
-    protected $dates = ['deleted_at'];
+    public $translatable = ['category_title', 'category_slug'];
 
-    public $translatable = ['title', 'time', 'ingredients', 'recipe'];
+
+    protected $dates = ['deleted_at'];
 
 
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'recipe_recipe_recipe';
-
-    public $jsonable = ['ingredients'];
+    public $table = 'recipe_recipe_categories';
 
     /**
      * @var array Validation rules
      */
     public $rules = [
     ];
-    public $attachOne = [
-        'img' => 'System\Models\File'
-    ];
-    public $belongsToMany = [
-        'categories' => [Category::class, 'table' => 'recipe_recipe_category_recipe']
-    ];
 
+    public $belongsToMany = [
+        'recipes' => [Recipe::class, 'table' => 'recipe_recipe_category_recipe']
+    ];
 }
