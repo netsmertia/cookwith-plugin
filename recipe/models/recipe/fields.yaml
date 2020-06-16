@@ -41,10 +41,20 @@ tabs:
             span: full
             type: repeater
             prompt: 'Add Ingredient'
-            minItems: 1
-            style: collapsed
+            show: true
+            minItems: 2
             form:
                 fields:
+                    ingredient_order:
+                        label: Group Order
+                        type: text
+                        span: col-xs-2
+                        cssClass: col-xs-2
+                    ingredient_group:
+                        label: Group
+                        type: text
+                        span: col-xs-2
+                        cssClass: col-xs-2
                     ingredient_name:
                         label: 'Ingredient Name'
                         type: text
@@ -52,15 +62,15 @@ tabs:
                         cssClass: col-xs-4
                     ingredient_volume:
                         label: 'Ingredient Volume'
-                        span: col-xs-4
+                        span: col-xs-2
                         type: text
-                        cssClass: col-xs-4
+                        cssClass: col-xs-2
                         placeholder: 400
                     volume_unit:
                         label: 'Volume Unit'
-                        span: col-xs-4
+                        span: col-xs-2
                         type: text
-                        cssClass: col-xs-4
+                        cssClass: col-xs-2
                         placeholder: 'grams / pieces / cup / cloves etc.'
         recipe:
             tab: Reipce

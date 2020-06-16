@@ -6,6 +6,9 @@ class Plugin extends PluginBase
 {
     public function registerComponents()
     {
+        return [
+           'Recipe\Recipe\Components\Recipes' => 'recipes'
+        ];
     }
 
     public function registerSettings()

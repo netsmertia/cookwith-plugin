@@ -1,0 +1,15 @@
+
+
+
+{% set recipes = __SELF__.allRecipes() %}
+{{debug(recipes)}}
+<div class="container mt-7">
+<h2>Exam</h2>
+    <div class="row">
+        {% for i in recipes %}
+            <div class="col-md-{{12/recipes.count()}} mb-4">
+                {% partial '@post-card-p'  item=i %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
