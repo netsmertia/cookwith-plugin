@@ -1,25 +1,39 @@
 fields:
-    title:
-        label: Title
-        span: full
-        type: text
-        required: true
-        placeholder: 'My awesome recipe'
-    time:
-        label: Time
-        mode: time
-        span: auto
-        type: text
-        required: true
-        placeholder: '50 Min or 1.30 Hr'
-    serve:
-        label: Serves
-        span: auto
-        default: '1'
-        type: text
-        required: true
+        
 tabs:
     fields:
+
+        title:
+            label: Title
+            span: auto
+            type: text
+            required: true
+            placeholder: 'My awesome recipe'
+            tab: General
+        slug:
+            label: Page Url (Slug)
+            span: auto
+            type: text
+            required: true
+            preset:
+                field: title
+                type: slug
+            tab: General
+        time:
+            label: Time
+            mode: time
+            span: auto
+            type: text
+            required: true
+            placeholder: '50 Min or 1.30 Hr'
+            tab: General
+        serve:
+            label: Serves
+            span: auto
+            default: '1'
+            type: text
+            required: true
+            tab: General
 
         content:
             label: Content
@@ -33,6 +47,12 @@ tabs:
             type: relation
             nameFrom: category_title
             required: true
+            span: auto
+            tab: General
+        is_published:
+            label: Published
+            type: switch
+            default: 0
             span: auto
             tab: General
         ingredients:

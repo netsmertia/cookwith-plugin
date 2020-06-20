@@ -10,21 +10,25 @@
 			<h4 class="card-title">{{item.title}}</h4>
 		</a>
 		<p>
-			<small>Posted August 29, 2018</small>
+			<small>Posted {{item.created_at.format('l j, Y')}}</small>
 		</p>
 		<div
 			class="pb-3 d-flex justify-content-between border-bottom border-primary">
 			{# <a href="#" class="border border-primary px-4 py-1">Meat</a> #}
-			<a href="#" class="mr-2 btn btn-outline-primary card-btn">Meat</a>
+			{% if item.categories.count() > 0 %}
+				<a href="#" class="mr-2 px-1 btn btn-outline-primary card-btn">{{item.categories.first.category_title}}</a>
+			{% else %}
+				<div></div>
+			{% endif %}
 			<div class="d-flex align-items-center justify-content-end">
 				<img class="mr-2" src="{{ 'assets/images/good-rate.png'| theme}}" alt="good-rating" width="14" height="14">
-				<small class="fs12">Serves: {{item.serve}}</small>
-				<img class="ml-3 mr-2" src="{{ 'assets/images/clock.png'| theme}}" alt="good-rating" width="14" height="14">
-				<small class="">Time: {{item.time}}</small>
+				<span class="f9">Serves: {{item.serve}}</span>
+				<img class="ml-2 mr-2" src="{{ 'assets/images/clock.png'| theme}}" alt="good-rating" width="14" height="14">
+				<span class="f9">Time: {{item.time|replace({'Minutes': '', 'minutes': '', 'Minute':'','minute': '','Hours': '', 'Min': '',})}}</span>
 			</div>
 		</div>
 		<div class="pt-3 content">
-			<p class="text-ellipsis">Let Sousou tell you how to prepare this dish. Check out how to guarantee tender meat that comes with a tang.</p>
+			<p class="text-ellipsis">{{item.content}}</p>
 		</div>
 		<div class="row">
 			<div class="col-md-12">

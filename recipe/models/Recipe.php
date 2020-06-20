@@ -13,7 +13,7 @@ class Recipe extends Model
 
     public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
     public $translatable = ['title', 'time', 'ingredients', 'recipe'];
 

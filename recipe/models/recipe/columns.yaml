@@ -1,4 +1,8 @@
 columns:
+    id: 
+        label: Id
+        type: text
+        invisible: true
     title:
         label: title
         type: text
@@ -11,3 +15,13 @@ columns:
     rating:
         label: rating
         type: text
+    is_published:
+        label: Published
+        type: switch
+    created_at:
+        label: Created
+        type: datetime
+    updated_at:
+        label: Created
+        type: datetime
+        invisible: true
