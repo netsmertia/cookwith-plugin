@@ -1,0 +1,56 @@
+fields:
+    ad_id:
+        label: 'Ad ID'
+        required: true
+        type: text
+        placeholder: 'Ad ID -> ''home_horz_ad'''
+        span: auto
+    ad_type:
+        label: 'Ad type'
+        type: dropdown
+        span: auto
+        required: true
+        options:
+            HAD: 'Horizontal Advertisement'
+            VAD: 'Vertical Advertisement'
+            BAD: 'Block Advertisement (square size)'
+    is_image:
+        label: 'Is image Ad?'
+        type: switch
+        default: true
+        span: full
+    image:
+        label: 'Advertisement Image'
+        mode: image
+        imageWidth: 200
+        imageHeight: 100
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        required: true
+        trigger:
+            action: show
+            field: is_image
+            condition: checked
+        type: fileupload
+    url:
+        label: Url
+        span: auto
+        placeholder: 'Url to navigate on clicking on image'
+        trigger:
+            action: show
+            field: is_image
+            condition: checked
+        type: text
+    content:
+        label: 'Advertisement Content (HTML)'
+        size: 'huge'
+        span: full
+        hidden: true
+        trigger:
+            action: show
+            field: is_image
+            condition: unchecked
+        type: richeditor

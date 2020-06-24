@@ -3,9 +3,15 @@
 use Cms\Classes\ComponentBase;
 use recipe\Recipe\Models\Recipe;
 use recipe\Recipe\Models\Category;
+use recipe\Recipe\Models\Advertisement;
 
 class Recipes extends ComponentBase
 {
+    public function onInit()
+    {
+        // $this->controller->addComponent('\Recipe\Recipe\Components\Ads', 'ads', []);
+    }
+
     public function componentDetails()
     {
         return [
@@ -20,7 +26,7 @@ class Recipes extends ComponentBase
             'section_title' => [
                 'title'             => 'Title',
                 'description'       => 'Category section title',
-                'default'           => 'My title',
+                'default'           =>  null,
                 'type'              => 'string',
             ],
             'section_view_more_url' => [
@@ -41,10 +47,10 @@ class Recipes extends ComponentBase
                 'default'           => 4,
                 'type'              => 'string',
             ],
-            'ads_id' => [
+            'ad_id' => [
                 'title' => 'Ad ID',
                 'description' => 'Proivde the AD ID to show in last column',
-                'default' => 1,
+                'default' => null,
                 'type' => 'string'
             ]
         ];
@@ -67,16 +73,24 @@ class Recipes extends ComponentBase
         return $recipes->get();
     }
 
-    // public function categoriesWithRecipes($recipes_limit = 10) {
-    //     $recipes_limit = $this->property('recipes_limit', $recipes_limit);
+    public function getAllCategories() {
+        return Category::get();
+    }
 
-    //     $categories = Category::with(['recipes' => function($query) use ($recipes_limit) {
-    //         if ($recipes_limit) {
-    //             $query->limit($recipes_limit);
-    //         }
-    //     }]);
-    //     $categories = $categories->get();
-        
-    //     debug($categories->toArray());
-    // }
+    public function getCategory($category) {
+        $cat = Category::where('category_slug', $category)->first();
+        return $cat;
+    }
+
+    public function getAd() {
+        $adId = $this->property('ad_id');
+        debug($adId);
+        if ($adId == null) {
+            return;
+        } else {
+            $ad = Advertisement::with('image')->where('ad_id', $adId)->first();
+            debug($ad);
+            return ($ad);
+        }
+    }
 }

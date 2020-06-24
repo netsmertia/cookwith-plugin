@@ -1,0 +1,28 @@
+columns:
+    id:
+        label: id
+        type: number
+    ad_id:
+        label: ad_id
+        type: text
+    ad_type:
+        label: ad_type
+        type: text
+    content:
+        label: content
+        type: text
+    container_css:
+        label: container_css
+        type: text
+    url:
+        label: url
+        type: text
+    created_at:
+        label: created_at
+        type: datetime
+    updated_at:
+        label: updated_at
+        type: datetime
+    deleted_at:
+        label: deleted_at
+        type: datetime

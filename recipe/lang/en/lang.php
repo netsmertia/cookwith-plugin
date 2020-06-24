@@ -21,4 +21,6 @@
     'recipe' => [
         'recipes' => 'Recipes',
     ],
+    'advertisement' => 'Advertisement',
+    'manage_advertisement' => 'Manage Advertisement',
 ];

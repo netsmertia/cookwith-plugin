@@ -62,7 +62,7 @@ tabs:
             type: repeater
             prompt: 'Add Ingredient'
             show: true
-            minItems: 2
+            minItems: 0
             form:
                 fields:
                     ingredient_order:

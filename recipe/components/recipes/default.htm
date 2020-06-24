@@ -2,9 +2,8 @@
 
 
 {% set recipes = __SELF__.allRecipes() %}
-{% set has_ads = __SELF__.property('ads_id') %}
+{% set has_ads = __SELF__.property('ad_id') %}
 {% set cols = has_ads ? 3 : 4 %}
-
 
 <section class="pt-6 container">
 		<div class="row">
@@ -12,9 +11,11 @@
                 {% if __SELF__.property('section_title') %}
                     <h3 class="mb-3">{{__SELF__.property('section_title')}}</h3>
                 {% endif %}
-				<div>
-					<a href="#" class="btn btn-primary">View More</a>
-				</div>
+                {% if __SELF__.property('section_view_more_url') %}
+                    <div>
+                        <a href="#" class="btn btn-primary">View More</a>
+                    </div>
+                {% endif %}
 			</div>
 		</div>
         {% if  has_ads %}
@@ -29,10 +30,18 @@
                         {% endfor %}
                     </div>
         {% if has_ads %}
+            {% set ad = __SELF__.getAd() %}
                 </div>
-                <div class="col-md-3 d-flex justify-content-center">
-                    <img src="{{'assets/images/vertical-banner.jpg'|theme}}" alt="vertical add" class="img-fluid align-self-start">
-                </div>
+                {# Show vertical ad #}
+                {% if ad.ad_type == 'VAD' %}
+                    {% if ad.is_image %}
+                        <div class="col-md-3 d-flex justify-content-center">
+                        <a href="{{ad.url}}">
+                            <img src="{{__SELF__.getAd().image.path}}" alt="vertical add" class="img-fluid align-self-start">
+                        </a>
+                        </div>
+                    {% endif %}
+                {% endif %}
             </div>
         {% endif %}
 </section>

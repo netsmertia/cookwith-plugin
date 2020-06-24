@@ -25,6 +25,12 @@ navigation:
                 icon: icon-sitemap
                 permissions:
                     - categories_view
+            advertisement:
+                label: 'recipe.recipe::lang.advertisement'
+                url: recipe/recipe/advertisements
+                icon: icon-simplybuilt
+                permissions:
+                    - manage_ads
 permissions:
     manage_recipe:
         tab: 'recipe.recipe::lang.plugin.name'
@@ -32,3 +38,6 @@ permissions:
     categories_view:
         tab: 'recipe.recipe::lang.category.categories'
         label: 'recipe.recipe::lang.permission.categories_view'
+    manage_ads:
+        tab: 'recipe.recipe::lang.advertisement'
+        label: 'recipe.recipe::lang.manage_advertisement'

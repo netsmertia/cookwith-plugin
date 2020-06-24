@@ -1,0 +1,31 @@
+{% set ad = __SELF__.getAd() %}
+
+{% if ad.ad_type == 'HAD' %}
+	{% if ad.is_image %}
+		<div class="section">
+			<div class="container mt-5 pt-5 pb-8">
+				<div class="row justify-content-center">
+					<div class="col-md-12">
+					<a href="{{ad.url}}"></a>
+						<img class="img-fluid w-100" src="{{ad.image.path}}" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+	{% else %}
+		{{content|raw}}
+	{% endif %}
+{% endif %}
+
+{% if ad.ad_type == 'VAD' %}
+	<div class="section">
+		<div class="container mt-5 pt-5 pb-8">
+			<div class="row justify-content-center">
+				<div class="col-md-12">
+				<a href="{{ad.url}}"></a>
+					<img class="img-fluid w-100" src="{{ad.image.path}}" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+{% endif %}

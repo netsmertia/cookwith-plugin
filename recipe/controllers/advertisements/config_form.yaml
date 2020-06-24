@@ -1,0 +1,10 @@
+name: Advertisements
+form: $/recipe/recipe/models/advertisement/fields.yaml
+modelClass: recipe\Recipe\Models\Advertisement
+defaultRedirect: recipe/recipe/advertisements
+create:
+    redirect: 'recipe/recipe/advertisements/update/:id'
+    redirectClose: recipe/recipe/advertisements
+update:
+    redirect: recipe/recipe/advertisements
+    redirectClose: recipe/recipe/advertisements
