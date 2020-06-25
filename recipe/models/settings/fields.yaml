@@ -10,4 +10,9 @@ tabs:
       type: text
       span: auto
       tab: Social Media
+    about:
+      label: About
+      type: markdown
+      span: auto
+
       
