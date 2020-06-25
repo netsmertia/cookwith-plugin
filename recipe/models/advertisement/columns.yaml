@@ -2,27 +2,33 @@ columns:
     id:
         label: id
         type: number
+        invisible: true
     ad_id:
-        label: ad_id
+        label: Ad ID
         type: text
     ad_type:
-        label: ad_type
+        label: Ad Type
         type: text
+    is_image:
+        label: Is Image Ad
+        type: switch
     content:
-        label: content
+        label: Content
         type: text
+        invisible: true
     container_css:
-        label: container_css
+        label: Container CSS
         type: text
+        invisible: true
     url:
-        label: url
+        label: OnClick URL
         type: text
+        invisible: true
     created_at:
-        label: created_at
+        label: Created At
         type: datetime
+        invisible: true
     updated_at:
-        label: updated_at
+        label: Updated At
         type: datetime
-    deleted_at:
-        label: deleted_at
-        type: datetime
+        invisible: true

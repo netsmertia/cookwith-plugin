@@ -59,12 +59,12 @@ class Recipes extends ComponentBase
 
 
     public function allRecipes() {
-        $category_slug = $this->property('category');
-        debug($category_slug);
+        $category = $this->property('category');
+        debug($category);
         $recipes = Recipe::with('categories');
-        if ($category_slug) {
-            $recipes = $recipes->whereHas('categories', function($query) use ($category_slug) {
-                $query->where('category_title', $category_slug);
+        if ($category) {
+            $recipes = $recipes->whereHas('categories', function($query) use ($category) {
+                $query->where('category_title', $category);
             });
         }
         if ($this->property('limit')) {

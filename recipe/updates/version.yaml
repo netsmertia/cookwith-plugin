@@ -45,3 +45,6 @@
 1.0.16:
     - 'Updated table recipe_recipe_ads'
     - builder_table_update_recipe_recipe_ads.php
+1.0.17:
+    - 'Updated table recipe_recipe_recipe'
+    - builder_table_update_recipe_recipe_recipe_11.php

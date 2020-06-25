@@ -3,6 +3,7 @@
 
 {% set recipes = __SELF__.allRecipes() %}
 {% set has_ads = __SELF__.property('ad_id') %}
+{% set url = __SELF__.property('section_view_more_url') %}
 {% set cols = has_ads ? 3 : 4 %}
 
 <section class="pt-6 container">
@@ -11,9 +12,9 @@
                 {% if __SELF__.property('section_title') %}
                     <h3 class="mb-3">{{__SELF__.property('section_title')}}</h3>
                 {% endif %}
-                {% if __SELF__.property('section_view_more_url') %}
+                {% if url %}
                     <div>
-                        <a href="#" class="btn btn-primary">View More</a>
+                        <a href="{{url}}" class="btn btn-primary">View More</a>
                     </div>
                 {% endif %}
 			</div>

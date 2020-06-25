@@ -23,7 +23,7 @@ class Recipe extends Model
      */
     public $table = 'recipe_recipe_recipe';
 
-    public $jsonable = ['ingredients'];
+    public $jsonable = ['ingredients', 'directions'];
 
     /**
      * @var array Validation rules

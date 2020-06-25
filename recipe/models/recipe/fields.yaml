@@ -75,29 +75,36 @@ tabs:
                         type: text
                         span: col-xs-2
                         cssClass: col-xs-2
-                    ingredient_name:
+                    name:
                         label: 'Ingredient Name'
                         type: text
                         span: col-xs-4
                         cssClass: col-xs-4
-                    ingredient_volume:
+                    quantity:
                         label: 'Ingredient Volume'
                         span: col-xs-2
                         type: text
                         cssClass: col-xs-2
                         placeholder: 400
-                    volume_unit:
+                    unit:
                         label: 'Volume Unit'
                         span: col-xs-2
                         type: text
                         cssClass: col-xs-2
                         placeholder: 'grams / pieces / cup / cloves etc.'
-        recipe:
+        directions:
             tab: Reipce
-            label: Recipe
+            label: Recipe Directions
             span: full
-            size: huge
-            type: richeditor
+            type: repeater
+            prompt: Add Direction
+            style: collapsed
+            form:
+                fields:
+                    direction:
+                        label: Direction
+                        type: text
+                        span: full
 
         img:
             label: 'Cover Image'
