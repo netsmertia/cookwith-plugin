@@ -23,4 +23,7 @@
     ],
     'advertisement' => 'Advertisement',
     'manage_advertisement' => 'Manage Advertisement',
+    'advertisements' => [
+        'adspace' => 'Ad Space',
+    ],
 ];

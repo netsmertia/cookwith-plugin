@@ -5,7 +5,7 @@ use Model;
 /**
  * Model
  */
-class Advertisement extends Model
+class AdSpace extends Model
 {
     use \October\Rain\Database\Traits\Validation;
     
@@ -17,19 +17,15 @@ class Advertisement extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'recipe_recipe_ads';
+    public $table = 'recipe_recipe_adspace';
 
     /**
      * @var array Validation rules
      */
     public $rules = [
     ];
-        
-    public $attachOne = [
-        'image' => 'System\Models\File'
-    ];
 
-    public $belongsTo = [
-        'adSpace' => AdSpace::class,
+    public $hasOne = [
+        'ad' => Advertisement::class,
     ];
 }

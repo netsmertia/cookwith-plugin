@@ -1,0 +1,15 @@
+fields:
+    title:
+        label: Title
+        span: auto
+        type: text
+    space_code:
+        label: Ad Space Code
+        span: auto
+        type: text
+    is_active:
+        label: Is Active?
+        type: switch
+        default: true
+
+

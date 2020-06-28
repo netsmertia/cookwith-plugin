@@ -1,4 +1,10 @@
 fields:
+    adSpace:
+        label: Ad Space
+        type: relation
+        span: full
+        nameFrom: title
+
     ad_id:
         label: 'Ad ID'
         required: true

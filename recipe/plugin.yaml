@@ -31,6 +31,10 @@ navigation:
                 icon: icon-simplybuilt
                 permissions:
                     - manage_ads
+            adspace:
+                label: 'recipe.recipe::lang.advertisements.adspace'
+                url: recipe/recipe/adspaces
+                icon: icon-sitemap
 permissions:
     manage_recipe:
         tab: 'recipe.recipe::lang.plugin.name'

@@ -1,0 +1,10 @@
+name: AdSpaces
+form: $/recipe/recipe/models/adspace/fields.yaml
+modelClass: recipe\Recipe\Models\AdSpace
+defaultRedirect: recipe/recipe/adspaces
+create:
+    redirect: 'recipe/recipe/adspaces/update/:id'
+    redirectClose: recipe/recipe/adspaces
+update:
+    redirect: recipe/recipe/adspaces
+    redirectClose: recipe/recipe/adspaces
