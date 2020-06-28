@@ -5,14 +5,20 @@ use Backend;
 
 class Plugin extends PluginBase
 {
-    public function registerComponents()
+    public function registercomponents()
     {
         return [
-           'Recipe\Recipe\Components\Recipes' => 'recipes',
-           'Recipe\Recipe\Components\Ads' => 'ads'
+           'recipe\recipe\components\recipes' => 'recipes',
+           'recipe\recipe\components\ads' => 'ads'
         ];
     }
-
+    public function registerPageSnippets()
+    {
+        return [
+           'recipe\recipe\components\recipes' => 'recipes',
+           'recipe\recipe\components\ads' => 'ads'
+        ];
+    }
     public function registerSettings()
     {
         return [

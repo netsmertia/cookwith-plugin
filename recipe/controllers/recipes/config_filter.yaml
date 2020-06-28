@@ -1,0 +1,24 @@
+scopes:
+    published:
+      label: Published
+      type: checkbox
+      default: 0
+      conditions: is_published = true
+    unpublished:
+      label: Unpublished
+      type: checkbox
+      default: 0
+      conditions: is_published <> true
+    category:
+        label: Category
+        modelClass: Recipe\Recipe\Models\Category
+        conditions: id in (:filtered)
+        nameFrom: category_title
+    recipe_type:
+      label: Recipe Type
+      type: group
+      conditions: recipe_type = (:filtered)
+      options:
+        TEXT: Recipe Post
+        VIDEO: Recipe Video
+        BOTH: Recipe Post with Video

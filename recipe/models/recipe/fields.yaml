@@ -1,7 +1,4 @@
 fields:
-        
-tabs:
-    fields:
 
         title:
             label: Title
@@ -9,16 +6,16 @@ tabs:
             type: text
             required: true
             placeholder: 'My awesome recipe'
-            tab: General
         slug:
-            label: Page Url (Slug)
+            label: 'Page Url (Slug)'
             span: auto
             type: text
             required: true
             preset:
                 field: title
                 type: slug
-            tab: General
+tabs:
+    fields:
         time:
             label: Time
             mode: time
@@ -34,7 +31,15 @@ tabs:
             type: text
             required: true
             tab: General
-
+        recipe_type:
+            label: Recipe Type
+            type: dropdown
+            span: auto
+            tab: General
+            options:
+                TEXT: Recipe Post
+                VIDEO: Recipe Video
+                BOTH: Recipe Post with Video
         content:
             label: Content
             span: auto
@@ -49,12 +54,52 @@ tabs:
             required: true
             span: auto
             tab: General
+        img:
+            label: 'Cover Image'
+            span: right
+            useCaption: true
+            required: true
+            type: fileupload
+            mode: image
+            imageHeight: 100
+            imageWidth: 200
+            tab: General
+            thumbOptions:
+                mode: crop
+                offset:
+                    - 0
+                    - 0
+                quality: 90
+                sharpen: 0
+                interlace: false
+                extension: auto
         is_published:
             label: Published
             type: switch
             default: 0
-            span: auto
+            span: right
             tab: General
+
+        video:
+            label: Video
+            type: text
+            placeholder: 'https://www.youtube.com/watch?v=2XRprOlz27g'
+            tab: Video
+            trigger:
+                action: hide
+                field: recipe_type
+                condition: value[TEXT]
+
+        recipe_of_the_day:
+            label: 'Recipe of the day'
+            type: switch
+            comment: 'Show video at ''Recipe of the day'' section'
+            tab: Video
+            trigger:
+                action: hide
+                field: recipe_type
+                condition: value[TEXT]
+
         ingredients:
             tab: Ingredients
             label: Ingradients
@@ -63,10 +108,14 @@ tabs:
             prompt: 'Add Ingredient'
             show: true
             minItems: 0
+            trigger:
+                action: hide
+                field: recipe_type
+                condition: value[VIDEO]
             form:
                 fields:
                     ingredient_order:
-                        label: Group Order
+                        label: 'Group Order'
                         type: text
                         span: col-xs-2
                         cssClass: col-xs-2
@@ -93,43 +142,34 @@ tabs:
                         cssClass: col-xs-2
                         placeholder: 'grams / pieces / cup / cloves etc.'
         directions:
-            tab: Reipce
-            label: Recipe Directions
+            tab: Directions
+            label: 'Recipe Directions'
             span: full
             type: repeater
-            prompt: Add Direction
+            prompt: 'Add Direction'
             style: collapsed
+            trigger:
+                action: hide
+                field: recipe_type
+                condition: value[VIDEO]
             form:
                 fields:
                     direction:
                         label: Direction
                         type: text
                         span: full
-
-        img:
-            label: 'Cover Image'
-            span: col-xs-4
-            cssClass: col-xs-4
-            useCaption: true
-            required: true
-            type: fileupload
-            mode: image
-            imageHeight: 100
-            imageWidth: 200
-            tab: Cover
-            thumbOptions:
-                mode: crop
-                offset:
-                    - 0
-                    - 0
-                quality: 90
-                sharpen: 0
-                interlace: false
-                extension: auto
-        video:
-            label: Video
+        related:
+            type: partial
+            commentAbove: These recipes will be shown in recommended section. if not provided, recipes will be randomally selected.
+            path: $/recipe/recipe/controllers/recipes/_field_related.htm
+            tab: Related
+        seo_page_title:
+            label: SEO Title
             type: text
-            span: col-xs-8
-            cssClass: col-xs-8
-            placeholder: 'https://www.youtube.com/watch?v=2XRprOlz27g'
-            tab: Cover
+            span: full
+            tab: SEO
+        seo_metadescription:
+            label: SEO Meta Description
+            type: text
+            span: full
+            tab: SEO

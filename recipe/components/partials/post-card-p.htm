@@ -1,13 +1,13 @@
 <div class="card card-post">
-    <a href="/recipe/single" class="card-image-top">
+    <a href="{{__SELF__.property('recipe_url')|page({slug:item.slug})}}" class="card-image-top">
         <img src="{{'assets/images/post-thumb-2.jpg'|theme}}" alt="" class="img-fluid mh-173" >
         <div class="card-image-overlay">
             <h4 class="card-title">{{item.title}}</h4>
         </div>
     </a>
 	<div class="card-body">
-		<a href="/recipe/single">
-			<h4 class="card-title">{{item.title}}</h4>
+		<a href="{{__SELF__.property('recipe_url')|page({slug:item.slug})}}">
+			<h4 class="card-title text-capitalize">{{item.title|lower}}</h4>
 		</a>
 		<p>
 			<small>Posted {{item.created_at.format('l j, Y')}}</small>
@@ -32,7 +32,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<a href="/recipe/single" class="btn btn-primary px-3">Read More</a>
+				<a href="{{__SELF__.property('recipe_url')|page({slug:item.slug})}}" class="btn btn-primary px-3">Read More</a>
 			</div>
 			<div class="col-md-12 mt-3">
 				<div class="share d-flex align-items-center">

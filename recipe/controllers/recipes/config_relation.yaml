@@ -1,0 +1,11 @@
+related:
+    label: Related Recipes
+    view:
+        list: $/recipe/recipe/models/recipe/columns.yaml
+        toolbarButtons: add|remove
+    manage:
+        list: $/recipe/recipe/models/recipe/columns_related.yaml
+        form: $/recipe/recipe/models/recipe/fields.yaml
+        recordsPerPage: 10
+        showSearch: true
+        filter: config_filter.yaml

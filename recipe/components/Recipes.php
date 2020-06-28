@@ -52,16 +52,36 @@ class Recipes extends ComponentBase
                 'description' => 'Proivde the AD ID to show in last column',
                 'default' => null,
                 'type' => 'string'
-            ]
+            ],
+            'recipe_type' => [
+                'title' => 'Recipe Type',
+                'default' => 'TEXT',
+                'type' => 'dropdown',
+                'options' => [
+                    'TEXT' => 'Recipe Post',
+                    'VIDEO' => 'Recipe Video',
+                    'BOTH' => 'Recipe Post with Video'
+                ]
+            ],
+            'recipe_url' => [
+                'title' => 'Recipe URL',
+                'description' => 'Recipe view page url',
+                'default' => 'recipe',
+                'type' => 'string'
+            ],
         ];
     }
 
 
+    public function test() {
+        $recipe = Recipe::with(['related' => function($q) {
+            $q->with('img')->select(['id', 'title', 'rating','slug']);
+        }])->find(1);
+    }
 
     public function allRecipes() {
         $category = $this->property('category');
-        debug($category);
-        $recipes = Recipe::with('categories');
+        $recipes = Recipe::with(['categories', 'img']);
         if ($category) {
             $recipes = $recipes->whereHas('categories', function($query) use ($category) {
                 $query->where('category_title', $category);
@@ -70,11 +90,19 @@ class Recipes extends ComponentBase
         if ($this->property('limit')) {
             $recipes = $recipes->limit($this->property('limit'));
         }
+
+        if ($this->property('recipe_type')) {
+            $recipes = $recipes->where('recipe_type', '=', $this->property('recipe_type'));
+        }
+
         return $recipes->get();
     }
 
     public function getAllCategories() {
         return Category::get();
+    }
+    public function getAllCategoriesForSlider() {
+        return Category::with('image')->whereHas('image')->get();
     }
 
     public function getCategory($category) {
@@ -93,4 +121,22 @@ class Recipes extends ComponentBase
             return ($ad);
         }
     }
+
+    public function getRecipeOfTheDay() {
+        $recipe = Recipe::with('categories')
+            ->where('video', '!=', '')
+            ->where('recipe_of_the_day', 1)
+            ->first();
+        return $recipe;
+    }
+
+    public function getRecipe($recipe_slug = null) {
+        $recipe = Recipe::with(['img', 'related' => function ($q) {
+            $q->with('img')->select('id', 'title', 'slug', 'rating', 'video', 'recipe_type');
+        }])
+            ->where('slug', $recipe_slug)->first();
+        return $recipe;
+    }
+
 }
+

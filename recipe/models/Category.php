@@ -31,6 +31,10 @@ class Category extends Model
     public $rules = [
     ];
 
+
+    public $attachOne = [
+        'image' => File::class
+    ];
     public $belongsToMany = [
         'recipes' => [Recipe::class, 'table' => 'recipe_recipe_category_recipe']
     ];

@@ -3,11 +3,12 @@
 {% if ad.ad_type == 'HAD' %}
 	{% if ad.is_image %}
 		<div class="section">
-			<div class="container mt-5 pt-5 pb-8">
+			<div class="container-fluid container-lg mt-5 pt-5 pb-8">
 				<div class="row justify-content-center">
 					<div class="col-md-12">
-					<a href="{{ad.url}}"></a>
+					<a href="{{ad.url}}">
 						<img class="img-fluid w-100" src="{{ad.image.path}}" alt="">
+					</a>
 					</div>
 				</div>
 			</div>
@@ -18,14 +19,11 @@
 {% endif %}
 
 {% if ad.ad_type == 'VAD' %}
-	<div class="section">
-		<div class="container mt-5 pt-5 pb-8">
-			<div class="row justify-content-center">
-				<div class="col-md-12">
-				<a href="{{ad.url}}"></a>
-					<img class="img-fluid w-100" src="{{ad.image.path}}" alt="">
-				</div>
-			</div>
+	<div class="row justify-content-center">
+		<div class="col-md-12">
+			<a href="{{ad.url}}">
+				<img class="img-fluid w-100" src="{{ad.image.path}}" alt="">
+			</a>
 		</div>
 	</div>
 {% endif %}

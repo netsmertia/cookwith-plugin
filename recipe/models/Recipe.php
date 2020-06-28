@@ -15,7 +15,7 @@ class Recipe extends Model
 
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
-    public $translatable = ['title', 'time', 'ingredients', 'recipe'];
+    public $translatable = ['title', 'slug', 'ingredients', 'directions', 'content', 'seo_page_title', 'seo_metadescription'];
 
 
     /**
@@ -23,7 +23,7 @@ class Recipe extends Model
      */
     public $table = 'recipe_recipe_recipe';
 
-    public $jsonable = ['ingredients', 'directions'];
+    public $jsonable = ['ingredients', 'directions', ];
 
     /**
      * @var array Validation rules
@@ -31,10 +31,16 @@ class Recipe extends Model
     public $rules = [
     ];
     public $attachOne = [
-        'img' => 'System\Models\File'
+        'img' => File::class,
     ];
     public $belongsToMany = [
-        'categories' => [Category::class, 'table' => 'recipe_recipe_category_recipe']
+        'categories' => [Category::class, 'table' => 'recipe_recipe_category_recipe'],
+        'related' => [
+            Recipe::class, 
+            'table'  => 'recipe_recipe_related',
+            'key'      => 'recipe_id',
+            'otherKey' => 'related_id'
+        ]
     ];
 
 }

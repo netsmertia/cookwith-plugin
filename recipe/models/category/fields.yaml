@@ -11,8 +11,17 @@ fields:
             type: slug
         defaultFrom: category_title
         type: text
-    description:
-        label: 'recipe.recipe::lang.category.description'
-        size: small
-        span: full
-        type: textarea
+    # description:
+    #     label: 'recipe.recipe::lang.category.description'
+    #     size: small
+    #     span: full
+    #     type: textarea
+    image:
+        label: Category Image
+        type: fileupload
+        mode: image
+        imageHeight: 240
+        imageWidth: 240
+        useCaption: true
+
+        

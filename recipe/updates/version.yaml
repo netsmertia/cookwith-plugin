@@ -48,3 +48,24 @@
 1.0.17:
     - 'Updated table recipe_recipe_recipe'
     - builder_table_update_recipe_recipe_recipe_11.php
+1.0.18:
+    - 'Updated table recipe_recipe_recipe'
+    - builder_table_update_recipe_recipe_recipe_12.php
+1.0.19:
+    - 'Created table recipe_recipe_recomanded'
+    - builder_table_create_recipe_recipe_recomanded.php
+1.0.20:
+    - 'Drop table recipe_recipe_recomanded'
+    - builder_table_delete_recipe_recipe_recomanded.php
+1.0.21:
+    - 'Created table recipe_recipe_related'
+    - builder_table_create_recipe_recipe_related.php
+1.0.22:
+    - 'create files table'
+    - db_system_files.php
+1.0.23:
+    - 'Updated table recipe_recipe_recipe'
+    - builder_table_update_recipe_recipe_recipe_13.php
+1.0.24:
+    - 'Updated table recipe_recipe_recipe'
+    - builder_table_update_recipe_recipe_recipe_14.php

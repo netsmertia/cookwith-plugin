@@ -2,17 +2,10 @@ columns:
     id: 
         label: Id
         type: text
-        invisible: true
     title:
         label: title
         type: text
         searchable: true
-    time:
-        label: time
-        type: text
-    serve:
-        label: serve
-        type: number
     rating:
         label: rating
         type: text
@@ -21,9 +14,4 @@ columns:
         type: switch
     created_at:
         label: Created
-        type: date
-    updated_at:
-        label: Created
-        type: date
-        invisible: true
-
+        type: datetime
