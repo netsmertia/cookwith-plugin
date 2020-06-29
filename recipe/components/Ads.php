@@ -1,6 +1,8 @@
 <?php namespace Recipe\Recipe\Components;
 
 use Cms\Classes\ComponentBase;
+use recipe\Recipe\Controllers\Advertisements;
+use recipe\Recipe\Models\AdSpace;
 use recipe\Recipe\Models\Advertisement;
 
 class Ads extends ComponentBase
@@ -16,21 +18,21 @@ class Ads extends ComponentBase
     public function defineProperties()
     {
         return [
-            'ad_id' => [
-                'title'             => 'Ad ID',
-                'description'       => 'Advertisement ID',
+            'space_code' => [
+                'title'             => 'Ad Space Code',
                 'default'           =>  null,
                 'type'              => 'string',
             ],
         ];
     }
 
-    public function getAd($adId = null) {
-        $adId = $adId == null ? $this->property('ad_id'): $adId;
-        if ($adId == null) {
+    public function getAd($spaceCode = null) {
+        $spaceCode = $spaceCode == null ? $this->property('space_code'): $spaceCode;
+        if ($spaceCode == null) {
             return;
         } else {
-            return Advertisement::with('image')->where('ad_id', $adId)->first();
+            $adSapce = AdSpace::with(['ads', 'ads.image'])->where('space_code', $spaceCode)->first();
+            return $adSapce;
         }
     }
 }

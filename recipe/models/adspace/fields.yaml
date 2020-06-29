@@ -10,6 +10,19 @@ fields:
     is_active:
         label: Is Active?
         type: switch
+        comment: Make slot acitve/ deactive. If deactived, placeholder image will be shown.
         default: true
+    is_random_ad:
+        label: Show Ad Randomly
+        comment: If ON, ads will be shown randomly. If OFF, First ad will be shown
+        type: switch
+        default: true
+tabs:
+    fields:
+        ads:
+            type: partial
+            path: field_ads
+            tab: Advertisements
+            commentAbove: Add the advertisements to be displayed this slot.
 
 

@@ -1,0 +1,11 @@
+ads:
+    label: Advertisements
+    view:
+        list: $/recipe/recipe/models/advertisement/columns.yaml
+        toolbarButtons: add|create|remove
+    manage:
+        list: $/recipe/recipe/models/advertisement/columns.yaml
+        form: $/recipe/recipe/models/advertisement/fields.yaml
+        recordsPerPage: 10
+        showSearch: true
+        # filter: config_filter.yaml

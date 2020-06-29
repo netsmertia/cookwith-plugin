@@ -1,6 +1,7 @@
 <?php namespace recipe\Recipe\Models;
 
 use Model;
+use recipe\Recipe\Controllers\Advertisements;
 
 /**
  * Model
@@ -25,7 +26,12 @@ class AdSpace extends Model
     public $rules = [
     ];
 
-    public $hasOne = [
-        'ad' => Advertisement::class,
+    public $belongsToMany = [
+        'ads' => [
+            Advertisement::class,
+            'table' => 'recipe_recipe_ads_adspace',
+            'key'      => 'adspace_id',
+            'otherKey' => 'ad_id'
+        ],
     ];
 }

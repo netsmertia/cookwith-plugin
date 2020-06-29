@@ -1,31 +1,31 @@
 columns:
     id:
-        label: id
+        label: Id
         type: number
         invisible: true
-    ad_id:
-        label: ad_id
-        type: number
-    is_active:
-        label: is_active
-        type: switch
-    created_at:
-        label: created_at
-        type: date
-        invisible: true
-    updated_at:
-        label: updated_at
-        type: date
-        invisible: false
-    deleted_at:
-        label: deleted_at
-        type: datetime
-        invisible: true
-    space_code:
-        label: space_code
-        type: text
-        searchable: true
     title:
         label: title
         type: text
         searchable: true
+    space_code:
+        label: space_code
+        type: text
+        searchable: true
+    is_active:
+        label: Is Active?
+        type: switch
+    is_random_ad:
+        label: Show Ad Randomly
+        type: switch
+    created_at:
+        label: Created At
+        type: date
+        invisible: true
+    updated_at:
+        label: Updated At
+        type: date
+        invisible: true
+    deleted_at:
+        label: Delated At
+        type: datetime
+        invisible: true

@@ -29,7 +29,12 @@ class Advertisement extends Model
         'image' => 'System\Models\File'
     ];
 
-    public $belongsTo = [
-        'adSpace' => AdSpace::class,
+    public $belongsToMany = [
+        'adSpaces' => [
+            AdSpace::class,
+            'table' => 'recipe_recipe_ads_adspace',
+            'key'      => 'ad_id',
+            'otherKey' => 'adspace_id'
+        ],
     ];
 }

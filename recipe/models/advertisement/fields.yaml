@@ -1,9 +1,4 @@
 fields:
-    adSpace:
-        label: Ad Space
-        type: relation
-        span: full
-        nameFrom: title
 
     ad_id:
         label: 'Ad ID'
@@ -54,9 +49,14 @@ fields:
         label: 'Advertisement Content (HTML)'
         size: 'huge'
         span: full
-        hidden: true
         trigger:
             action: show
             field: is_image
             condition: unchecked
         type: richeditor
+tabs:
+    fields:
+        adspaces:
+            type: partial
+            path: field_adspaces
+            tab: Ad Spaces

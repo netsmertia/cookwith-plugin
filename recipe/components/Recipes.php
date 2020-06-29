@@ -4,6 +4,7 @@ use Cms\Classes\ComponentBase;
 use recipe\Recipe\Models\Recipe;
 use recipe\Recipe\Models\Category;
 use recipe\Recipe\Models\Advertisement;
+use recipe\Recipe\Models\AdSpace;
 
 class Recipes extends ComponentBase
 {
@@ -47,9 +48,9 @@ class Recipes extends ComponentBase
                 'default'           => 4,
                 'type'              => 'string',
             ],
-            'ad_id' => [
-                'title' => 'Ad ID',
-                'description' => 'Proivde the AD ID to show in last column',
+            'space_code' => [
+                'title' => 'Space Code',
+                'description' => 'Space Code',
                 'default' => null,
                 'type' => 'string'
             ],
@@ -110,15 +111,13 @@ class Recipes extends ComponentBase
         return $cat;
     }
 
-    public function getAd() {
-        $adId = $this->property('ad_id');
-        debug($adId);
-        if ($adId == null) {
+    public function getAd($spaceCode = null) {
+        $spaceCode = $spaceCode == null ? $this->property('space_code'): $spaceCode;
+        if ($spaceCode == null) {
             return;
         } else {
-            $ad = Advertisement::with('image')->where('ad_id', $adId)->first();
-            debug($ad);
-            return ($ad);
+            $adSapce = AdSpace::with(['ads', 'ads.image'])->where('space_code', $spaceCode)->first();
+            return $adSapce;
         }
     }
 

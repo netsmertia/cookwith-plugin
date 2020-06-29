@@ -2,7 +2,7 @@
 
 
 {% set recipes = __SELF__.allRecipes() %}
-{% set has_ads = __SELF__.property('ad_id') %}
+{% set has_ads = __SELF__.property('space_code') %}
 {% set url = __SELF__.property('section_view_more_url') %}
 {% set cols = has_ads ? 3 : 4 %}
 
@@ -31,14 +31,20 @@
                         {% endfor %}
                     </div>
         {% if has_ads %}
-            {% set ad = __SELF__.getAd() %}
+            {% set adSpace = __SELF__.getAd() %}
+
+            {% if adSpace.is_random_ad and adSpace.ads.count() > 0  %}
+                {% set ad  =  adSpace.ads.random() %}
+            {% else %}
+                {% set ad  =  adSpace.ads.sortBy('updated_at').first() %}
+            {% endif %}
                 </div>
                 {# Show vertical ad #}
-                {% if ad.ad_type == 'VAD' %}
+                {% if adSpace.space_type == 'V' or adSpace.space_type == 'B' %}
                     {% if ad.is_image %}
                         <div class="col-md-4 col-lg-3 d-flex justify-content-center">
                         <a href="{{ad.url}}">
-                            <img src="{{__SELF__.getAd().image.path}}" alt="vertical add" class="img-fluid align-self-start">
+                            <img src="{{ad.image.path}}" alt="vertical add" class="img-fluid align-self-start">
                         </a>
                         </div>
                     {% endif %}

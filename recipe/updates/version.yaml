@@ -78,3 +78,12 @@
 1.0.27:
     - 'Updated table recipe_recipe_ads'
     - builder_table_update_recipe_recipe_ads_3.php
+1.0.28:
+    - 'Updated table recipe_recipe_adspace'
+    - builder_table_update_recipe_recipe_adspace.php
+1.0.29:
+    - 'Created table recipe_recipe_ads_adspace'
+    - builder_table_create_recipe_recipe_ads_adspace.php
+1.0.30:
+    - 'Updated table recipe_recipe_adspace'
+    - builder_table_update_recipe_recipe_adspace_2.php
