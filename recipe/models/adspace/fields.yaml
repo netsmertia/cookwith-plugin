@@ -12,11 +12,22 @@ fields:
         type: switch
         comment: Make slot acitve/ deactive. If deactived, placeholder image will be shown.
         default: true
+        span: left
+    space_type:
+        label: 'Ad Space type'
+        type: dropdown
+        span: right
+        required: true
+        options:
+            H: 'Space for Horizontal Advertisement'
+            V: 'Space Vertical Advertisement'
+            B: 'Space Block Advertisement (square size)'
     is_random_ad:
         label: Show Ad Randomly
         comment: If ON, ads will be shown randomly. If OFF, First ad will be shown
         type: switch
         default: true
+        span: left
 tabs:
     fields:
         ads:

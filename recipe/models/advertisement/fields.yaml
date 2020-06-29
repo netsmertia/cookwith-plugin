@@ -5,21 +5,17 @@ fields:
         required: true
         type: text
         placeholder: 'Ad ID -> ''home_horz_ad'''
-        span: auto
-    ad_type:
-        label: 'Ad type'
-        type: dropdown
-        span: auto
-        required: true
-        options:
-            HAD: 'Horizontal Advertisement'
-            VAD: 'Vertical Advertisement'
-            BAD: 'Block Advertisement (square size)'
+        span: full
     is_image:
         label: 'Is image Ad?'
         type: switch
         default: true
-        span: full
+        span: auto
+    is_active:
+        label: 'Is Active?'
+        type: switch
+        default: true
+        span: auto
     image:
         label: 'Advertisement Image'
         mode: image

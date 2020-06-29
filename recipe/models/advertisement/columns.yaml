@@ -6,11 +6,11 @@ columns:
     ad_id:
         label: Ad ID
         type: text
-    ad_type:
-        label: Ad Type
-        type: text
     is_image:
         label: Is Image Ad
+        type: switch
+    is_active:
+        label: Is Active
         type: switch
     content:
         label: Content

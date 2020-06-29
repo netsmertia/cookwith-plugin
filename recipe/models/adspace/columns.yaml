@@ -11,11 +11,15 @@ columns:
         label: space_code
         type: text
         searchable: true
+    space_type:
+        label: Ad Space type
+        type: text
+        searchable: true
     is_active:
         label: Is Active?
         type: switch
     is_random_ad:
-        label: Show Ad Randomly
+        label: Rotate Ads
         type: switch
     created_at:
         label: Created At
