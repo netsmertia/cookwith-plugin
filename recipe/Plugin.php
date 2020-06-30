@@ -8,15 +8,15 @@ class Plugin extends PluginBase
     public function registercomponents()
     {
         return [
-           'recipe\recipe\components\recipes' => 'recipes',
-           'recipe\recipe\components\ads' => 'ads'
+           'Recipe\Recipe\Components\Recipes' => 'recipes',
+           'Recipe\Recipe\Components\Ads' => 'ads'
         ];
     }
     public function registerPageSnippets()
     {
         return [
-           'recipe\recipe\components\recipes' => 'recipes',
-           'recipe\recipe\components\ads' => 'ads'
+           'Recipe\Recipe\Components\Recipes' => 'recipes',
+           'Recipe\Recipe\Components\Ads' => 'ads'
         ];
     }
     public function registerSettings()
