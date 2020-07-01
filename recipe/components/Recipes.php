@@ -137,5 +137,32 @@ class Recipes extends ComponentBase
         return $recipe;
     }
 
+    public function getVideo($slug = null) {
+        $video = Recipe::with(['related' => function ($q) {
+            // $q->with('img')->select('id', 'title', 'slug', 'rating', 'video', 'recipe_type');
+        }, 'img'])->where([
+            ['video', '!=', null],
+            ['recipe_type', 'VIDEO']
+        ]);
+
+        if ($slug) {
+            $video = $video->where('slug', $slug);
+        }
+
+        $video = $video->first();
+        debug($video->related);
+        return $video;
+    }
+
+
+
+    public function getAllVideos($category = null) {
+        $videos = Recipe::where([
+            ['video', '!=', null],
+            ['recipe_type', 'VIDEO']
+        ])->get();
+
+        return $videos;
+    }
 }
 
