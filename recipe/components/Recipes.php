@@ -174,7 +174,7 @@ class Recipes extends ComponentBase
         }
 
         if ($limit) {
-            $videos = $videos->take($limit);
+            $videos = $videos->limit($limit);
         }
 
 
@@ -182,7 +182,7 @@ class Recipes extends ComponentBase
         if ($paginate) {
             $videos = $videos->paginate(10);
         } else {
-            return $videos->limit(16)->get();
+            return $videos->get();
         }
 
         return $videos;
