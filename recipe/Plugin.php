@@ -5,6 +5,14 @@ use Backend;
 
 class Plugin extends PluginBase
 {
+    public $required = [
+        'Flynsarmy.Menu',
+        'RainLab.Blog',
+        'RainLab.Translate',
+        'PolloZen.NextPrevPost',
+        'VojtaSvoboda.TwigExtensions',
+        'Bedard.Debugbar',
+    ];
     public function registercomponents()
     {
         return [

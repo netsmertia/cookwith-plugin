@@ -139,7 +139,7 @@ class Recipes extends ComponentBase
 
     public function getVideo($slug = null) {
         $video = Recipe::with(['related' => function ($q) {
-            // $q->with('img')->select('id', 'title', 'slug', 'rating', 'video', 'recipe_type');
+            $q->with('img')->select('id', 'title', 'slug', 'rating', 'video', 'recipe_type');
         }, 'img'])->where([
             ['video', '!=', null],
             ['recipe_type', 'VIDEO']
@@ -155,20 +155,34 @@ class Recipes extends ComponentBase
 
 
 
-    public function getAllVideos($category = null, $limit = null) {
+    public function getAllVideos($paginate = true, $limit = null) {
         $videos = Recipe::where([
             ['video', '!=', null],
             ['recipe_type', 'VIDEO']
-        ])->get();
+        ])->with('img');
 
-        if ($category) {
-            $videos = $videos->whereHas(['categories' => function ($q) use ($category) {
-                $q->where('category', $category);
-            }]);
+        $category = input('cats');
+        if (!empty($category)) {
+            $videos = $videos->whereHas('categories' , function ($q) use ($category) {
+                $q->whereIn('id', $category);
+            });
+        }
+
+        $term = input('term');
+        if ($term) {
+            $videos = $videos->where('title', 'like', "%$term%");
         }
 
         if ($limit) {
             $videos = $videos->take($limit);
+        }
+
+
+
+        if ($paginate) {
+            $videos = $videos->paginate(10);
+        } else {
+            return $videos->limit(16)->get();
         }
 
         return $videos;

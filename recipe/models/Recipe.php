@@ -15,7 +15,7 @@ class Recipe extends Model
 
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
-    public $translatable = ['title', 'slug', 'ingredients', 'directions', 'content', 'seo_page_title', 'seo_metadescription'];
+    public $translatable = [ ['title', 'index' => true ], 'slug', 'ingredients', 'directions', 'content', 'seo_page_title', 'seo_metadescription'];
 
 
     /**
