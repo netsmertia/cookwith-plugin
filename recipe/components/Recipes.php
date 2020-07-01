@@ -150,7 +150,6 @@ class Recipes extends ComponentBase
         }
 
         $video = $video->first();
-        debug($video->related);
         return $video;
     }
 
