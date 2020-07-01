@@ -156,11 +156,21 @@ class Recipes extends ComponentBase
 
 
 
-    public function getAllVideos($category = null) {
+    public function getAllVideos($category = null, $limit = null) {
         $videos = Recipe::where([
             ['video', '!=', null],
             ['recipe_type', 'VIDEO']
         ])->get();
+
+        if ($category) {
+            $videos = $videos->whereHas(['categories' => function ($q) use ($category) {
+                $q->where('category', $category);
+            }]);
+        }
+
+        if ($limit) {
+            $videos = $videos->take($limit);
+        }
 
         return $videos;
     }
