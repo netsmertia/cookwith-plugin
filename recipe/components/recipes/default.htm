@@ -10,11 +10,11 @@
 		<div class="row">
 			<div class="col-md-{{has_ads ? 9 : 12}} d-flex justify-content-between">
                 {% if __SELF__.property('section_title') %}
-                    <h3 class="mb-3">{{__SELF__.property('section_title')}}</h3>
+                    <h3 class="mb-3">{{__SELF__.property('section_title')|_}}</h3>
                 {% endif %}
                 {% if url %}
                     <div>
-                        <a href="{{url}}" class="btn btn-primary">View More</a>
+                        <a href="{{'category-page'|page({category: url})}}" class="btn btn-primary">{{'View More'|_}}</a>
                     </div>
                 {% endif %}
 			</div>

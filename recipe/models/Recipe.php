@@ -30,6 +30,11 @@ class Recipe extends Model
      */
     public $rules = [
     ];
+    
+    public $with = [
+        'translations',
+    ];
+
     public $attachOne = [
         'img' => File::class,
     ];

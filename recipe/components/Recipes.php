@@ -193,7 +193,7 @@ class Recipes extends ComponentBase
             $recipes = Recipe::whereHas('categories', function($q) use ($category_slug) {
                 $q->where('category_slug', $category_slug);
             })->where('recipe_type', 'TEXT')
-            ->limit(7)->orderBy('created_at')->select(['title', 'slug'])->get();
+            ->limit(7)->orderBy('created_at')->get();
             return $recipes;
         }
     }

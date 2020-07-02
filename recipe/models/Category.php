@@ -14,7 +14,7 @@ class Category extends Model
 
     public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
 
-    public $translatable = ['category_title', 'category_slug'];
+    public $translatable = [['category_title', 'index' => true], 'category_slug'];
 
 
     protected $dates = ['deleted_at'];
@@ -29,6 +29,10 @@ class Category extends Model
      * @var array Validation rules
      */
     public $rules = [
+    ];
+
+    public $with = [
+        'translations',
     ];
 
 
