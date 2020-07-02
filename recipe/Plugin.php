@@ -12,6 +12,7 @@ class Plugin extends PluginBase
         'PolloZen.NextPrevPost',
         'VojtaSvoboda.TwigExtensions',
         'Bedard.Debugbar',
+        'JanVince.SmallContactForm',
     ];
     public function registercomponents()
     {
