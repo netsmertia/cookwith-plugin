@@ -197,5 +197,17 @@ class Recipes extends ComponentBase
             return $recipes;
         }
     }
+    public function getAllRecipesWithPagination($term = '') {
+
+        debug($term);
+        $recipes = Recipe::with(['img'])
+            ->where('recipe_type', 'TEXT')
+            ->where('title', 'like', "%$term%")
+            ->select('id', 'title', 'slug', 'content', 'created_at')
+            ->paginate(12);
+
+
+        return $recipes;
+    }
 }
 
