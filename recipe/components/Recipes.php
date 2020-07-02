@@ -187,5 +187,15 @@ class Recipes extends ComponentBase
 
         return $videos;
     }
+
+    public function getRecipesForMenu($category_slug = null) {
+        if ($category_slug) {
+            $recipes = Recipe::whereHas('categories', function($q) use ($category_slug) {
+                $q->where('category_slug', $category_slug);
+            })->where('recipe_type', 'TEXT')
+            ->limit(7)->orderBy('created_at')->select(['title', 'slug'])->get();
+            return $recipes;
+        }
+    }
 }
 

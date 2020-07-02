@@ -13,6 +13,7 @@ class Plugin extends PluginBase
         'VojtaSvoboda.TwigExtensions',
         'Bedard.Debugbar',
         'JanVince.SmallContactForm',
+        'Excodus.TranslateExtended'
     ];
     public function registercomponents()
     {
