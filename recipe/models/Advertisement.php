@@ -37,4 +37,7 @@ class Advertisement extends Model
             'otherKey' => 'adspace_id'
         ],
     ];
+    public function scopeActive($query) {
+        return $query->where('is_active', true);
+    }
 }

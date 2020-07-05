@@ -31,7 +31,9 @@ class Ads extends ComponentBase
         if ($spaceCode == null) {
             return;
         } else {
-            $adSapce = AdSpace::with(['ads', 'ads.image'])->where('space_code', $spaceCode)->first();
+            $adSapce = AdSpace::with(['ads' => function ($q) {
+                $q->active();
+            }, 'ads.image'])->where('space_code', $spaceCode)->active()->first();
             return $adSapce;
         }
     }

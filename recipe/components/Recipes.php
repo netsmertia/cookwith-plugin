@@ -82,10 +82,11 @@ class Recipes extends ComponentBase
 
     public function allRecipes() {
         $category = $this->property('category');
-        $recipes = Recipe::with(['categories', 'img']);
+        $recipes = Recipe::with(['categories', 'img', 'translations'])->published();
         if ($category) {
             $recipes = $recipes->whereHas('categories', function($query) use ($category) {
-                $query->where('category_title', $category);
+                $query->where('category_title', $category)->withTrans();
+                    // ->select('id', 'category_title', 'category_slug');
             });
         }
         if ($this->property('limit')) {
@@ -95,6 +96,7 @@ class Recipes extends ComponentBase
         if ($this->property('recipe_type')) {
             $recipes = $recipes->where('recipe_type', '=', $this->property('recipe_type'));
         }
+        // $recipes = $recipes->select('id', 'title', 'slug', 'rating', 'created_at', 'serve', 'time', 'content');
 
         return $recipes->get();
     }
@@ -103,7 +105,8 @@ class Recipes extends ComponentBase
         return Category::get();
     }
     public function getAllCategoriesForSlider() {
-        return Category::with('image')->whereHas('image')->get();
+        return Category::withTrans()
+            ->with('image')->whereHas('image')->get();
     }
 
     public function getCategory($category) {
@@ -116,7 +119,9 @@ class Recipes extends ComponentBase
         if ($spaceCode == null) {
             return;
         } else {
-            $adSapce = AdSpace::with(['ads', 'ads.image'])->where('space_code', $spaceCode)->first();
+            $adSapce = AdSpace::with(['ads' => function ($q) {
+                $q->active();
+            }, 'ads.image'])->where('space_code', $spaceCode)->active()->first();
             return $adSapce;
         }
     }
@@ -125,6 +130,7 @@ class Recipes extends ComponentBase
         $recipe = Recipe::with('categories')
             ->where('video', '!=', '')
             ->where('recipe_of_the_day', 1)
+            ->published()
             ->first();
         return $recipe;
     }
@@ -133,7 +139,10 @@ class Recipes extends ComponentBase
         $recipe = Recipe::with(['img', 'related' => function ($q) {
             $q->with('img')->select('id', 'title', 'slug', 'rating', 'video', 'recipe_type');
         }])
-            ->where('slug', $recipe_slug)->first();
+        ->withTrans()
+        ->transWhere('slug', $recipe_slug, 'ar')
+        ->published()
+        ->first();
         return $recipe;
     }
 
@@ -143,10 +152,10 @@ class Recipes extends ComponentBase
         }, 'img'])->where([
             ['video', '!=', null],
             ['recipe_type', 'VIDEO']
-        ]);
-
+        ])->withTrans()
+        ->published();
         if ($slug) {
-            $video = $video->where('slug', $slug);
+            $video = $video->transWhere('slug', $slug, 'ar');
         }
 
         $video = $video->first();
@@ -159,7 +168,7 @@ class Recipes extends ComponentBase
         $videos = Recipe::where([
             ['video', '!=', null],
             ['recipe_type', 'VIDEO']
-        ])->with('img');
+        ])->with('img')->withTrans()->published();
 
         $category = input('cats');
         if (!empty($category)) {
@@ -170,14 +179,12 @@ class Recipes extends ComponentBase
 
         $term = input('term');
         if ($term) {
-            $videos = $videos->where('title', 'like', "%$term%");
+            $videos = $videos->transWhere('title', "%$term%", 'ar', 'like');
         }
 
         if ($limit) {
             $videos = $videos->limit($limit);
         }
-
-
 
         if ($paginate) {
             $videos = $videos->paginate(10);
@@ -193,20 +200,50 @@ class Recipes extends ComponentBase
             $recipes = Recipe::whereHas('categories', function($q) use ($category_slug) {
                 $q->where('category_slug', $category_slug);
             })->where('recipe_type', 'TEXT')
-            ->limit(7)->orderBy('created_at')->get();
+            ->withTrans()
+            ->limit(7)->orderBy('created_at')->published()->get();
             return $recipes;
         }
     }
-    public function getAllRecipesWithPagination($term = '') {
+    //get All the recipes with or without search term
+    // search will be performed in arabic along with english if locale is 'ar'
+    // search will be performed in english only if locale is 'en'
+    // pagination will be done depending on $paginate varialable passed
+    // recipes will be selected with $type_in ie. [TEXT, VIDEO, BOTH]
+    public function getAllRecipes($term = '', $type_in = ["TEXT"], $paginate = true, $limit = 10) {
 
-        debug($term);
+        // first get all the recipes id mathing search term
+        $term = input('term', $term);
+        $x = collect();
+        if (\App::getLocale() == 'ar' && $term) {
+            $x = \Db::table('rainlab_translate_indexes')->where(
+                [
+                    ['locale', '=', 'ar'],
+                    ['model_type', '=', 'recipe\recipe\models\recipe'],
+                    ['item', '=', 'title'],
+                    ['term', 'like', "%$term%"]
+                ]
+            )->pluck('model_id');
+        }    
+        
         $recipes = Recipe::with(['img'])
-            ->where('recipe_type', 'TEXT')
-            ->where('title', 'like', "%$term%")
-            ->select('id', 'title', 'slug', 'content', 'created_at')
-            ->paginate(12);
+            ->whereIn('recipe_type', $type_in)
+            ->where(function($q) use ($x, $term){
+                $q->whereIn('id', $x);
 
+                if ($term) {
+                    $q->orWhere('title', 'like', "%$term%");
+                }
+            })
+            ->withTrans()
+            ->published()
+            ->select('recipe_recipe_recipe.id', 'title', 'created_at', 'content');
 
+        if ($paginate) {
+            $recipes = $recipes->paginate(12);
+        } else {
+            $recipes = $recipes->get();
+        }
         return $recipes;
     }
 }

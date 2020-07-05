@@ -13,8 +13,10 @@ class Plugin extends PluginBase
         'VojtaSvoboda.TwigExtensions',
         'Bedard.Debugbar',
         'JanVince.SmallContactForm',
-        'Excodus.TranslateExtended'
+        'Excodus.TranslateExtended',
+        'JorgeAndrade.Subscribe',
     ];
+    
     public function registercomponents()
     {
         return [
@@ -57,4 +59,5 @@ class Plugin extends PluginBase
         ];
 
     }
+
 }

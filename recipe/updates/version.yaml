@@ -90,3 +90,9 @@
 1.0.31:
     - 'Updated table recipe_recipe_ads'
     - builder_table_update_recipe_recipe_ads4.php
+1.0.32:
+    - 'Updated table recipe_recipe_recipe'
+    - builder_table_update_recipe_recipe_recipe_4.php
+1.0.33:
+    - add_index_to_columns
+    - migration1033.php

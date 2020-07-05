@@ -14,7 +14,10 @@ class Category extends Model
 
     public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
 
-    public $translatable = [['category_title', 'index' => true], 'category_slug'];
+    public $translatable = [
+        ['category_title', 'index' => true], 
+        ['category_slug', 'index' => true]
+    ];
 
 
     protected $dates = ['deleted_at'];
@@ -42,4 +45,13 @@ class Category extends Model
     public $belongsToMany = [
         'recipes' => [Recipe::class, 'table' => 'recipe_recipe_category_recipe']
     ];
+
+    public function scopeWithTrans($query, $locale = 'ar') {
+        if ($locale && \App::getLocale() == 'ar') {
+            return $query->with('translations');
+        }
+    }
+    public function scopeActive($query) {
+        return $query->where('is_active', true);
+    }
 }

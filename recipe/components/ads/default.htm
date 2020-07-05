@@ -5,6 +5,7 @@
 {% else %}
 	{% set ad  =  adSpace.ads.sortBy('updated_at').first() %}
 {% endif %}
+{% if adSpace.count() > 0 and ad.count() > 0 %}
 {% if adSpace.space_type == 'H' %}
 		<div class="section">
 			<div class="container-fluid container-lg mt-5 pt-5 pb-8">
@@ -31,4 +32,5 @@
 			</a>
 		</div>
 	</div>
+{% endif %}
 {% endif %}

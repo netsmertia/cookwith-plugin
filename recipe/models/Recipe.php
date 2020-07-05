@@ -15,8 +15,11 @@ class Recipe extends Model
 
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
-    public $translatable = [ ['title', 'index' => true ], 'slug', 'ingredients', 'directions', 'content', 'seo_page_title', 'seo_metadescription'];
-
+    public $translatable = [ 
+        ['title', 'index' => true ], 
+        ['slug',  'index' => true ],
+        'ingredients', 'directions', 'content', 'seo_page_title', 'seo_metadescription'
+    ];
 
     /**
      * @var string The database table used by the model.
@@ -31,9 +34,9 @@ class Recipe extends Model
     public $rules = [
     ];
     
-    public $with = [
-        'translations',
-    ];
+    // public $with = [
+    //     'translations',
+    // ];
 
     public $attachOne = [
         'img' => File::class,
@@ -48,4 +51,16 @@ class Recipe extends Model
         ]
     ];
 
+    public function scopeWithTrans($query, $locale = 'ar') {
+        if ($locale && \App::getLocale() == 'ar') {
+            return $query->with('translations');
+        }
+    }
+
+    public function scopePublished($query) {
+        return $query->where('is_published', true);
+    }
+    public function scopeActive($query) {
+        return $query->where('is_active', true);
+    }
 }
