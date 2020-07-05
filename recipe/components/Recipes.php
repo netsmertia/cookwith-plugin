@@ -221,7 +221,7 @@ class Recipes extends ComponentBase
                     ['locale', '=', 'ar'],
                     ['model_type', '=', 'recipe\recipe\models\recipe'],
                     ['item', '=', 'title'],
-                    ['term', 'like', "%$term%"]
+                    ['value', 'like', "%$term%"]
                 ]
             )->pluck('model_id');
         }    
@@ -237,7 +237,7 @@ class Recipes extends ComponentBase
             })
             ->withTrans()
             ->published()
-            ->select('recipe_recipe_recipe.id', 'title', 'created_at', 'content');
+            ->select('recipe_recipe_recipe.id', 'title', 'created_at', 'content', 'slug');
 
         if ($paginate) {
             $recipes = $recipes->paginate(12);
@@ -245,6 +245,13 @@ class Recipes extends ComponentBase
             $recipes = $recipes->get();
         }
         return $recipes;
+    }
+
+
+    public function onOverlaySearch() {
+        $term = input('overlay_search_term');
+        $result = self::getAllRecipes($term, ['TEXT', 'BOTH'], false);
+        $this->page['overlaySearchResult'] = $result;
     }
 }
 
