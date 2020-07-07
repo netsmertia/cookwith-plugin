@@ -253,5 +253,9 @@ class Recipes extends ComponentBase
         $result = self::getAllRecipes($term, ['TEXT', 'BOTH'], false);
         $this->page['overlaySearchResult'] = $result;
     }
+
+    public function onVote() {
+        debug(input());
+    }
 }
 

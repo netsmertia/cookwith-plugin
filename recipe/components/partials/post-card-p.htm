@@ -11,13 +11,13 @@
     </a>
 	<div class="card-body">
 		<a href="{{__SELF__.property('recipe_url')|page({slug:item.slug})}}">
-			<h4 class="card-title text-capitalize">{{item.title|lower}}</h4>
+			<h4 class="card-title text-capitalize text-ellipsis">{{item.title|lower}}</h4>
 		</a>
 		<p>
 			<small>{{'Posted'|_}} {{item.created_at.format('l j, Y')}}</small>
 		</p>
 		<div
-			class="pb-3 d-flex justify-content-between border-bottom border-primary">
+			class="pb-3 text-nowrap d-flex justify-content-between border-bottom border-primary">
 			{# <a href="#" class="border border-primary px-4 py-1">Meat</a> #}
 			{% if item.categories.count() > 0 %}
 				<a href="{{'category-page'|page({category: item.categories.first.category_slug})}}" class="mr-2 px-1 btn btn-outline-primary card-btn">{{item.categories.first.category_title}}</a>
@@ -25,23 +25,28 @@
 				<div></div>
 			{% endif %}
 			<div class="d-flex align-items-center justify-content-end">
-				<img class="mx-2" src="{{ 'assets/images/good-rate.png'| theme}}" alt="good-rating" width="14" height="14">
-				<span class="f9">{{'Serves'|_}}: {{item.serve}}</span>
-				<img class="mx-2" src="{{ 'assets/images/clock.png'| theme}}" alt="good-rating" width="14" height="14">
+				<img class="mx-1" src="{{ 'assets/images/good-rate.png'| theme}}" alt="good-rating" width="14" height="14">
+				<span class="f9 mr-1">{{'Serves'|_}}: {{item.serve}}</span>
+				<img class="mx-1" src="{{ 'assets/images/clock.png'| theme}}" alt="good-rating" width="14" height="14">
 				<span class="f9">{{'Time'|_}}: {{item.time|replace({'Minutes': '', 'minutes': '', 'Minute':'','minute': '','Hours': '', 'Min': '',})}}</span>
 			</div>
 		</div>
 		<div class="pt-3 content">
 			<p class="text-ellipsis">{{item.content}}</p>
 		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<a href="{{__SELF__.property('recipe_url')|page({slug:item.slug})}}" class="btn btn-primary px-3">{{"Read More"|_}}</a>
+		<div class="">
+			<a href="{{__SELF__.property('recipe_url')|page({slug:item.slug})}}" class="btn btn-primary px-3">{{"Read More"|_}}</a>
+		</div>
+		<div class="row no-gutters">
+			<div class="col mt-3">
+				<div class="small">
+					{% partial 'rating-cards' rating=item.rating postid = item.id %}
+				</div>
 			</div>
-			<div class="col-md-12 mt-3">
+			<div class="col-auto mt-3">
 				<div class="share d-flex align-items-center">
-					<span class="f18 text-primary">{{'Share'|_}}:</span>
-					{% partial 'share' %}
+					<span class="f14 text-primary">{{'Share'|_}}: </span>
+					{% partial 'share-cards' %}
 				</div>
 			</div>
 		</div>
