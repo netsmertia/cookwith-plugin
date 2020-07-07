@@ -5,32 +5,12 @@
 {% else %}
 	{% set ad  =  adSpace.ads.sortBy('updated_at').first() %}
 {% endif %}
-{% if adSpace.count() > 0 and ad.count() > 0 %}
-{% if adSpace.space_type == 'H' %}
-		<div class="section">
-			<div class="container-fluid container-lg mt-5 pt-5 pb-8">
-				<div class="row justify-content-center">
-					<div class="col-md-12">
-						{% if ad.is_image %}
-							<a href="{{ad.url}}">
-								<img class="img-fluid w-100" src="{{ad.image.path}}" alt="">
-							</a>
-						{% else %}
-							{{content|raw}}
-						{% endif %}
-					</div>
-				</div>
-			</div>
-		</div>
-{% endif %}
-
-{% if adSpace.space_type == 'V' or adSpace.space_type == 'B' %}
-	<div class="row justify-content-center">
-		<div class="col-md-12">
-			<a href="{{ad.url}}">
-				<img class="img-fluid w-100" src="{{ad.image.path}}" alt="">
-			</a>
-		</div>
-	</div>
-{% endif %}
+{% if adSpace %}
+	{% if adSpace.space_type == 'V' %}
+		{% partial 'ad-vertical' ad = ad %}
+	{% elseif adSpace.space_type == 'B' %}
+		{% partial 'ad-box' ad = ad %}
+	{% else %}
+		{% partial 'ad-banner' ad = ad %}
+	{% endif %}
 {% endif %}
