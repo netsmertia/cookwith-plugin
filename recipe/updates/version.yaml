@@ -96,3 +96,9 @@
 1.0.33:
     - add_index_to_columns
     - migration1033.php
+1.0.34:
+    - 'Updated table recipe_recipe_recipe'
+    - builder_table_update_recipe_recipe_recipe15.php
+1.0.35:
+    - 'Created table recipe_recipe_rating_log'
+    - builder_table_create_recipe_recipe_rating_log.php

@@ -5,6 +5,7 @@ use recipe\Recipe\Models\Recipe;
 use recipe\Recipe\Models\Category;
 use recipe\Recipe\Models\Advertisement;
 use recipe\Recipe\Models\AdSpace;
+use recipe\Recipe\Models\Rating;
 
 class Recipes extends ComponentBase
 {
@@ -255,7 +256,20 @@ class Recipes extends ComponentBase
     }
 
     public function onVote() {
-        debug(input());
+
+        $value = input('value');
+        $postId = input('postid');
+        $rating = new Rating();
+        $rating->ip = \Request::ip();
+        $rating->recipe_id = $postId;
+        $rating->rating = $value;
+        $rating->save();
+        if ($postId && $value) {
+            Recipe::where('id', $postId)->update([
+                'total_votes' => \DB::raw('total_votes+1'),
+                'total_rating' => \DB::raw("total_rating + $value")
+            ]);
+        }
     }
 }
 

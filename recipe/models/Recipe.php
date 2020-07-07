@@ -33,6 +33,8 @@ class Recipe extends Model
      */
     public $rules = [
     ];
+
+    protected $gaurded = [];
     
     // public $with = [
     //     'translations',

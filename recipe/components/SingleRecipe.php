@@ -24,6 +24,5 @@ class SingleRecipe extends ComponentBase
     {
         $orders = Order::with('orderItems', 'agent', 'orderItems.service', 'orderItems.subService')->where('user_id', Auth::getUser()->id)->get();
         $this->page['orders'] = $orders;
-        debug($orders->toArray());
     }
 }

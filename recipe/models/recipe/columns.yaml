@@ -13,9 +13,11 @@ columns:
     serve:
         label: serve
         type: number
-    rating:
+    ratings:
         label: rating
         type: text
+        default: NR
+        select: convert(total_rating / total_votes, decimal(4, 1))
     is_published:
         label: Published
         type: switch
