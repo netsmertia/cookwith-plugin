@@ -5,7 +5,7 @@ use Backend;
 
 class Plugin extends PluginBase
 {
-    public $required = [
+    public $require = [
         'Flynsarmy.Menu',
         'RainLab.Blog',
         'RainLab.Translate',
