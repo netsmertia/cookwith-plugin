@@ -163,13 +163,3 @@ tabs:
             commentAbove: These recipes will be shown in recommended section. if not provided, recipes will be randomally selected.
             path: $/recipe/recipe/controllers/recipes/_field_related.htm
             tab: Related
-        seo_page_title:
-            label: SEO Title
-            type: text
-            span: full
-            tab: SEO
-        seo_metadescription:
-            label: SEO Meta Description
-            type: text
-            span: full
-            tab: SEO

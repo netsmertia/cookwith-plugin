@@ -34,7 +34,7 @@ class Advertisement extends Model
             AdSpace::class,
             'table' => 'recipe_recipe_ads_adspace',
             'key'      => 'ad_id',
-            'otherKey' => 'adspace_id'
+            'otherKey' => 'ad_space_id'
         ],
     ];
     public function scopeActive($query) {

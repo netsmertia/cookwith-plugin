@@ -11,13 +11,14 @@ class BuilderTableCreateRecipeRecipeAdspace extends Migration
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('ad_id')->default(0);
             $table->integer('is_active')->default(1);
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
             $table->string('space_code');
+            $table->string('space_type', 10)->default('H');
             $table->string('title');
+            $table->boolean('is_random_ad')->default(1);
         });
     }
     

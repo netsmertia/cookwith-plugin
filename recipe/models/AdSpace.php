@@ -30,7 +30,7 @@ class AdSpace extends Model
         'ads' => [
             Advertisement::class,
             'table' => 'recipe_recipe_ads_adspace',
-            'key'      => 'adspace_id',
+            'key'      => 'ad_space_id',
             'otherKey' => 'ad_id'
         ],
     ];

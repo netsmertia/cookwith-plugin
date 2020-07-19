@@ -58,3 +58,11 @@
             </div>
         {% endif %}
 </section>
+
+{% if __SELF__.property('per_page') %}
+<div class="container">
+    <div class="d-flex justify-content-end">
+        {{recipes.links("pagination::bootstrap-4")|raw}}
+    </div>
+</div>
+{% endif %}

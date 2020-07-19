@@ -10,12 +10,13 @@ class BuilderTableCreateRecipeRecipeAdsAdspace extends Migration
         Schema::create('recipe_recipe_ads_adspace', function($table)
         {
             $table->engine = 'InnoDB';
-            $table->integer('ad_id');
-            $table->integer('adspace_id');
+            $table->integer('ad_id')->unsigned();
+            $table->integer('ad_space_id')->unsigned();
+            $table->string('space_type')->default('H');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
-            $table->primary(['ad_id','adspace_id']);
+            $table->primary(['ad_id','ad_space_id']);
         });
     }
     

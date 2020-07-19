@@ -71,6 +71,13 @@ class Recipes extends ComponentBase
                 'default' => 'recipe',
                 'type' => 'string'
             ],
+
+            'per_page' => [
+                'title'             => 'Per Page',
+                'description'       => 'Per page recipes if required paginated',
+                'default'           => null,
+                'type'              => 'string',
+            ],
         ];
     }
 
@@ -99,6 +106,9 @@ class Recipes extends ComponentBase
         }
         // $recipes = $recipes->select('id', 'title', 'slug', 'rating', 'created_at', 'serve', 'time', 'content');
 
+        if ($this->property('per_page')) {
+            return $recipes->paginate($this->property('per_page'));
+        }
         return $recipes->get();
     }
 
