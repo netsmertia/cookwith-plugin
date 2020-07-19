@@ -26,7 +26,7 @@ class Advertisement extends Model
     ];
         
     public $attachOne = [
-        'image' => 'System\Models\File'
+        'image' => File::class,
     ];
 
     public $belongsToMany = [

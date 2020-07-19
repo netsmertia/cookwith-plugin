@@ -3,9 +3,11 @@ columns:
         label: id
         type: number
         invisible: true
-    ad_id:
-        label: Ad ID
+    title:
+        label: AD Id/ Title
         type: text
+        searchable: true
+        sortable: true
     is_image:
         label: Is Image Ad
         type: switch

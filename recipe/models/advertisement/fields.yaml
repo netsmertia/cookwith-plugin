@@ -1,13 +1,22 @@
 fields:
 
-    ad_id:
-        label: 'Ad ID'
+    title:
+        label: 'Ad ID / Title'
         required: true
         type: text
-        placeholder: 'Ad ID -> ''home_horz_ad'''
-        span: full
+        placeholder: 'APPLE_LAPTOP_BANNER_AD'
+        span: auto
+    id: 
+        label: DB ID
+        type: text
+        disabled: true
+        comment: Auto Generated DB ID of Ad
+        span: auto
     is_image:
-        label: 'Is image Ad?'
+        label: 'AD type'
+        on: IMG
+        off: HTML
+        comment: Set Ad type (You can also attach an image in html content)
         type: switch
         default: true
         span: auto
@@ -33,9 +42,9 @@ fields:
             condition: checked
         type: fileupload
     url:
-        label: Url
+        label: Target Url
         span: auto
-        placeholder: 'Url to navigate on clicking on image'
+        placeholder: 'Url to navigate on clicking on Image'
         trigger:
             action: show
             field: is_image
@@ -43,6 +52,7 @@ fields:
         type: text
     content:
         label: 'Advertisement Content (HTML)'
+        commentAbove: 'Wrap the content in a link to follow when clicked'
         size: 'huge'
         span: full
         trigger:

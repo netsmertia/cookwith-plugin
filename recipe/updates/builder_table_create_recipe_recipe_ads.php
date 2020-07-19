@@ -11,7 +11,7 @@ class BuilderTableCreateRecipeRecipeAds extends Migration
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('title')->nullable();
+            $table->string('title')->unique()->nullable();
             $table->text('content')->nullable();
             $table->string('container_css')->nullable();
             $table->string('url')->nullable();
