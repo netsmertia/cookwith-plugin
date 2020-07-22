@@ -115,6 +115,11 @@ class Recipes extends ComponentBase
     public function getAllCategories() {
         return Category::get();
     }
+    public function getAllCategoriesWithVideo() {
+        return Category::whereHas('recipes', function($q) {
+            $q->where('recipe_type', '!=', 'TEXT');
+        })->get();
+    }
     public function getAllCategoriesForSlider() {
         return Category::withTrans()
             ->with('image')->whereHas('image')->get();
