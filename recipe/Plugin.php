@@ -60,4 +60,33 @@ class Plugin extends PluginBase
 
     }
 
+    public function registerMarkupTags()
+    {
+        return [
+            'filters' => [
+                // A global function, i.e str_plural()
+                'plural' => 'str_plural',
+
+                // A local method, i.e $this->makeTextAllCaps()
+                'youtubeId' => [$this, 'getYoutubeId']
+            ],
+            'functions' => [
+
+                // Using an inline closure
+                'helloWorld' => function() { return 'Hello World!'; }
+            ]
+        ];
+    }
+
+
+    public static function getYoutubeId($url)
+    {
+        if (strlen($url) < 12) {
+            return $url;
+        }
+        preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+        debug($url);
+        $youtube_id = $match[1];
+        return $youtube_id;
+    }
 }

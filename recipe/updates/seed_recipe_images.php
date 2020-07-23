@@ -8,13 +8,30 @@ class SeedRecipeImages extends Seeder
 {
     public function run()
     {
-        $recipes = Recipe::get();
+        // $recipes = Recipe::get();
+        // foreach($recipes as $recipe) {
+        //     $imageCode = $recipe->thumb;
+        //     if ($imageCode) {
+        //         $imageCodeParts = explode("/", $imageCode);
+        //         $imageName = $imageCodeParts[count($imageCodeParts) - 1];
+        //         $imagePath = __DIR__ . "/../images/" . $recipe->id . ".jpg";
+        //         // print($imagePath);
+        //         $file = new File();
+        //         $imageModel = $file->fromFile($imagePath);
+        //         $imageModel->save();
+        //         $recipe->img()->add($imageModel);
+        //     }
+        // }
+
+        $recipes = Recipe::doesntHave('img')->get();
+        $imgs = [];
         foreach($recipes as $recipe) {
             $imageCode = $recipe->thumb;
             if ($imageCode) {
                 $imageCodeParts = explode("/", $imageCode);
                 $imageName = $imageCodeParts[count($imageCodeParts) - 1];
                 $imagePath = __DIR__ . "/../images/" . $recipe->id . ".jpg";
+                $imgs[] = $imagePath;
                 // print($imagePath);
                 $file = new File();
                 $imageModel = $file->fromFile($imagePath);
@@ -22,6 +39,6 @@ class SeedRecipeImages extends Seeder
                 $recipe->img()->add($imageModel);
             }
         }
-
+        debug($imgs);
     }
 }

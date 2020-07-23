@@ -167,7 +167,7 @@ class Recipes extends ComponentBase
             $q->with('img')->select('id', 'title', 'slug', 'rating', 'video', 'recipe_type');
         }, 'img'])->where([
             ['video', '!=', null],
-            ['recipe_type', 'VIDEO']
+            ['recipe_type', '!=', 'TEXT']
         ])->withTrans()
         ->published();
         if ($slug) {
@@ -183,7 +183,7 @@ class Recipes extends ComponentBase
     public function getAllVideos($paginate = true, $limit = null) {
         $videos = Recipe::where([
             ['video', '!=', null],
-            ['recipe_type', 'VIDEO']
+            ['recipe_type','!=', 'TEXT']
         ])->with('img')->withTrans()->published();
 
         $category = input('cats');

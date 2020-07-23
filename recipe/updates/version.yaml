@@ -27,3 +27,6 @@
 1.0.10:
     - 'Created table recipe_recipe_rating_log'
     - builder_table_create_recipe_recipe_rating_log.php
+# 1.0.20:
+#     - 'Seed Recipe'
+#     - seed_recipe_images.php
