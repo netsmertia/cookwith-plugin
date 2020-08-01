@@ -160,6 +160,6 @@ tabs:
                         span: full
         related:
             type: partial
-            commentAbove: These recipes will be shown in recommended section. if not provided, recipes will be randomally selected.
+            commentAbove: These recipes will be shown in recommended section. if not provided, recipes will be randomally selected. (Select max 3 for best fit)
             path: $/recipe/recipe/controllers/recipes/_field_related.htm
             tab: Related
