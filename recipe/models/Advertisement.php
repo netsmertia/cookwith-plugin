@@ -11,6 +11,8 @@ class Advertisement extends Model
     
     use \October\Rain\Database\Traits\SoftDelete;
 
+    public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
+
     protected $dates = ['deleted_at'];
 
 
@@ -18,6 +20,10 @@ class Advertisement extends Model
      * @var string The database table used by the model.
      */
     public $table = 'recipe_recipe_ads';
+
+    public $translatable = [
+        'content'
+    ];
 
     /**
      * @var array Validation rules

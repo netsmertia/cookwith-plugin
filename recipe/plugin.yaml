@@ -25,6 +25,11 @@ navigation:
                 icon: icon-sitemap
                 permissions:
                     - categories_view
+    ads:
+        label: 'Ads'
+        url: recipe/recipe/advertisements
+        icon: icon-briefcase
+        sideMenu:
             advertisement:
                 label: 'recipe.recipe::lang.advertisement'
                 url: recipe/recipe/advertisements
@@ -35,6 +40,8 @@ navigation:
                 label: 'recipe.recipe::lang.advertisements.adspace'
                 url: recipe/recipe/adspaces
                 icon: icon-sitemap
+                permissions:
+                    - manage_ads
 permissions:
     manage_recipe:
         tab: 'recipe.recipe::lang.plugin.name'

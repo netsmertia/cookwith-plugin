@@ -18,6 +18,6 @@ class AdSpaces extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('recipe.Recipe', 'main-recipes', 'adspace');
+        BackendMenu::setContext('recipe.Recipe', 'ads', 'adspace');
     }
 }

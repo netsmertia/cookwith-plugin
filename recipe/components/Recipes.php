@@ -93,7 +93,9 @@ class Recipes extends ComponentBase
         $recipes = Recipe::with(['categories', 'img', 'translations'])->published();
         if ($category) {
             $recipes = $recipes->whereHas('categories', function($query) use ($category) {
-                $query->where('category_title', $category)->withTrans();
+                $query->where('category_title', $category)
+                    ->orWhere('category_slug', $category)
+                    ->withTrans();
                     // ->select('id', 'category_title', 'category_slug');
             });
         }
@@ -107,6 +109,7 @@ class Recipes extends ComponentBase
         // $recipes = $recipes->select('id', 'title', 'slug', 'rating', 'created_at', 'serve', 'time', 'content');
 
         if ($this->property('per_page')) {
+            debug( $recipes->paginate($this->property('per_page')));
             return $recipes->paginate($this->property('per_page'));
         }
         return $recipes->get();

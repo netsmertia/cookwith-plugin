@@ -1,17 +1,26 @@
 fields:
-
+    _okay:
+        type: hint
+        path: $/recipe/recipe/models/advertisement/hint.htm
     title:
         label: 'Ad ID / Title'
         required: true
         type: text
         placeholder: 'APPLE_LAPTOP_BANNER_AD'
-        span: auto
+        span: col-xs-4
+        cssClass: col-xs-4
     id: 
-        label: DB ID
+        label: Database ID (Auto Generated)
         type: text
         disabled: true
-        comment: Auto Generated DB ID of Ad
-        span: auto
+        span: col-xs-4
+        cssClass: col-xs-4
+    is_active:
+        label: 'Is Active?'
+        type: switch
+        default: true
+        span: col-xs-4
+        cssClass: col-xs-4 switch-fix
     is_image:
         label: 'AD type'
         on: IMG
@@ -19,50 +28,48 @@ fields:
         comment: Set Ad type (You can also attach an image in html content)
         type: switch
         default: true
-        span: auto
-    is_active:
-        label: 'Is Active?'
-        type: switch
-        default: true
-        span: auto
-    image:
-        label: 'Advertisement Image'
-        mode: image
-        imageWidth: 200
-        imageHeight: 100
-        useCaption: true
-        thumbOptions:
-            mode: crop
-            extension: auto
-        span: auto
-        required: true
-        trigger:
-            action: show
-            field: is_image
-            condition: checked
-        type: fileupload
-    url:
-        label: Target Url
-        span: auto
-        placeholder: 'Url to navigate on clicking on Image'
-        trigger:
-            action: show
-            field: is_image
-            condition: checked
-        type: text
-    content:
-        label: 'Advertisement Content (HTML)'
-        commentAbove: 'Wrap the content in a link to follow when clicked'
-        size: 'huge'
         span: full
-        trigger:
-            action: show
-            field: is_image
-            condition: unchecked
-        type: richeditor
 tabs:
     fields:
+        image:
+            label: 'Advertisement Image'
+            mode: image
+            imageWidth: 200
+            imageHeight: 100
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: auto
+            required: true
+            trigger:
+                action: show
+                field: is_image
+                condition: checked
+            type: fileupload
+            tab: Ad Content
+        url:
+            label: Target Url
+            span: auto
+            placeholder: 'Url to navigate on clicking on Image'
+            trigger:
+                action: show
+                field: is_image
+                condition: checked
+            type: text
+            tab: Ad Content
+        content:
+            label: 'Advertisement Content (HTML)'
+            commentAbove: 'Wrap the content in a link to follow when clicked. HTML content can be translated per locale'
+            size: 'huge'
+            span: full
+            trigger:
+                action: show
+                field: is_image
+                condition: unchecked
+            type: richeditor
+            tab: Ad Content
         adspaces:
             type: partial
-            path: field_adspaces
-            tab: Ad Spaces
+            path: $/recipe/recipe/controllers/advertisements/_field_adspaces.htm
+            tab: Link Ad Spaces

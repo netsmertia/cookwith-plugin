@@ -5,7 +5,7 @@ adSpaces:
         toolbarButtons: add|remove
     manage:
         list: $/recipe/recipe/models/adspace/columns.yaml
-        form: $/recipe/recipe/models/adspace/fields.yaml
+        # form: $/recipe/recipe/models/adspace/fields.yaml
         recordsPerPage: 10
         showSearch: true
         # filter: config_filter.yaml

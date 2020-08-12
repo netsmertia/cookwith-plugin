@@ -18,6 +18,6 @@ class Advertisements extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('recipe.Recipe', 'main-recipes', 'advertisement');
+        BackendMenu::setContext('recipe.Recipe', 'ads', 'advertisement');
     }
 }
