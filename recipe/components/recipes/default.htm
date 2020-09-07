@@ -39,13 +39,15 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-md-4 col-lg-3 d-flex justify-content-center">
-                {% if adSpace.space_type == 'V' %} 
-                    {% partial 'ad-vertical' ad = ad %}
-                {% endif %}
-                {% if adSpace.space_type == 'B' %} 
-                    {% partial 'ad-box' ad = ad %}
-                {% endif %}
+            <div class="col-md-4 col-lg-3 d-flex justify-content-center ads" data-ads-id="{{ad.id}}" data-space-id="{{adSpace.id}}">
+                <a href="/ad-target?ad_id={{ad.id}}&space_id={{adSpace.id}}&target={{ad.url}}">
+                    {% if adSpace.space_type == 'V' %} 
+                        {% partial 'ad-vertical' ad = ad %}
+                    {% endif %}
+                    {% if adSpace.space_type == 'B' %} 
+                        {% partial 'ad-box' ad = ad %}
+                    {% endif %}
+                </a>
             </div>
         </div>
         {% else %}

@@ -23,8 +23,8 @@ fields:
             V: 'Space Vertical Advertisement'
             B: 'Space Block Advertisement (square size)'
     is_random_ad:
-        label: Show Ad Randomly
-        comment: If ON, ads will be shown randomly. If OFF, First ad will be shown
+        label: Rotate Ads
+        comment: Enable to rotate ads (need more than one Ads)
         type: switch
         default: true
         span: left

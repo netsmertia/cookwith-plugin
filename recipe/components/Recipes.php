@@ -1,6 +1,7 @@
 <?php namespace Recipe\Recipe\Components;
 
 use Cms\Classes\ComponentBase;
+use Recipe\Recipe\Classes\AdsHelper;
 use recipe\Recipe\Models\Recipe;
 use recipe\Recipe\Models\Category;
 use recipe\Recipe\Models\Advertisement;
@@ -138,10 +139,10 @@ class Recipes extends ComponentBase
         if ($spaceCode == null) {
             return;
         } else {
-            $adSapce = AdSpace::with(['ads' => function ($q) {
+            $adSpace = AdSpace::with(['ads' => function ($q) {
                 $q->active();
             }, 'ads.image'])->where('space_code', $spaceCode)->active()->first();
-            return $adSapce;
+            return $adSpace;
         }
     }
 
@@ -329,6 +330,19 @@ class Recipes extends ComponentBase
                 'total_rating' => \DB::raw("total_rating + $value")
             ]);
         }
+    }
+
+    public function onSaveAdsStats() {
+        $data = input('data');
+        if (is_array($data)) {
+            foreach($data as $d) {
+                AdsHelper::logAd($d['space_id'], $d['ad_id'], $d['action'], \Request::ip());
+            }
+        }
+    }
+
+    public function redirect() {
+        return "hello";
     }
 }
 

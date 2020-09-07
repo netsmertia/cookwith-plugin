@@ -1,0 +1,43 @@
+columns:
+    id:
+        label: id
+        type: number
+        invisible: true
+    title:
+        label: AD Id/ Title
+        type: text
+        searchable: true
+        sortable: true
+    is_active:
+        label: Is Active
+        type: switch
+    clicks:
+        label: Clicks
+        type: text
+        relation: clicks
+        useRelationCount: true
+    views:
+        label: Views
+        type: text
+        relation: views
+        useRelationCount: true
+    clicks7days:
+        label: Clicks (7days)
+        type: text
+        relation: clicks7days
+        useRelationCount: true
+    views7days:
+        label: Views (7days)
+        type: text
+        relation: views7days
+        useRelationCount: true
+    clicks30days:
+        label: Clicks (30days)
+        type: text
+        relation: clicks30days
+        useRelationCount: true
+    views30days:
+        label: Views (30days)
+        type: text
+        relation: views30days
+        useRelationCount: true

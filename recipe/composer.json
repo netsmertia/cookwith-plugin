@@ -1,0 +1,13 @@
+{
+    "name": "nets/recipe",
+    "type": "octobercms plugin",
+    "require": {
+        "sinergi/browser-detector": "^6.1"
+    },
+    "authors": [
+        {
+            "name": "Natwar",
+            "email": "nets.developer@gmail.com"
+        }
+    ]
+}

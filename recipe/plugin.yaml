@@ -42,6 +42,12 @@ navigation:
                 icon: icon-sitemap
                 permissions:
                     - manage_ads
+            report:
+                label: Report
+                url: recipe/recipe/advertisements/report
+                icon: icon-dashboard
+                permissions:
+                    - manage_ads
 permissions:
     manage_recipe:
         tab: 'recipe.recipe::lang.plugin.name'

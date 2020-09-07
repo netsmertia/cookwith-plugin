@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Ads Report
+
+# Model Form Field configuration
+form: $/recipe/recipe/models/adsreport/fields.yaml
+
+# Model Class name
+modelClass: Recipe\Recipe\Models\AdsReport
+
+# Default redirect location
+defaultRedirect: recipe/recipe/adsreports
+
+# Create page
+create:
+    title: Create Ads Report
+    redirect: recipe/recipe/adsreports/update/:id
+    redirectClose: recipe/recipe/adsreports
+
+# Update page
+update:
+    title: Edit Ads Report
+    redirect: recipe/recipe/adsreports
+    redirectClose: recipe/recipe/adsreports
+
+# Preview page
+preview:
+    title: Preview Ads Report

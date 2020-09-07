@@ -18,6 +18,8 @@ class BuilderTableCreateRecipeRecipeAds extends Migration
 
             $table->boolean('is_image')->default(0);
             $table->boolean('is_active')->default(true);
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
 
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();

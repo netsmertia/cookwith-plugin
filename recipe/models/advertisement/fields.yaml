@@ -8,7 +8,7 @@ fields:
         type: text
         placeholder: 'APPLE_LAPTOP_BANNER_AD'
         span: col-xs-4
-        cssClass: col-xs-4
+        cssClass: col-xs-4 p-l-0
     id: 
         label: Database ID (Auto Generated)
         type: text
@@ -20,43 +20,45 @@ fields:
         type: switch
         default: true
         span: col-xs-4
-        cssClass: col-xs-4 switch-fix
+        cssClass: col-xs-4 switch-fix 
     is_image:
         label: 'AD type'
-        on: IMG
-        off: HTML
+        type: dropdown
+        options:
+            0 : HTML Ad
+            1 : Image Ad
         comment: Set Ad type (You can also attach an image in html content)
-        type: switch
-        default: true
-        span: full
+        default: 0
+        span: auto
+    url:
+        label: Url
+        span: auto
+        placeholder: 'Url to navigate on clicking on Ad'
+        type: text
+    start_date:
+        label: Ad Start Date
+        type: datepicker
+        comment: leave blank to start any date
+        mode: date
+        span: auto
+    end_date:
+        label: Ad End Date
+        type: datepicker
+        comment: leave blank to never end
+        mode: date
+        span: auto
 tabs:
     fields:
         image:
             label: 'Advertisement Image'
             mode: image
-            imageWidth: 200
-            imageHeight: 100
-            useCaption: true
-            thumbOptions:
-                mode: crop
-                extension: auto
             span: auto
             required: true
             trigger:
                 action: show
                 field: is_image
-                condition: checked
+                condition: value[1]
             type: fileupload
-            tab: Ad Content
-        url:
-            label: Target Url
-            span: auto
-            placeholder: 'Url to navigate on clicking on Image'
-            trigger:
-                action: show
-                field: is_image
-                condition: checked
-            type: text
             tab: Ad Content
         content:
             label: 'Advertisement Content (HTML)'
@@ -66,7 +68,7 @@ tabs:
             trigger:
                 action: show
                 field: is_image
-                condition: unchecked
+                condition: value[0]
             type: richeditor
             tab: Ad Content
         adspaces:

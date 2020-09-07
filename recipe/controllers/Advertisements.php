@@ -11,7 +11,7 @@ class Advertisements extends Controller
        'Backend\Behaviors\RelationController',
     ];
     
-    public $listConfig = 'config_list.yaml';
+    public $listConfig = ['list' => 'config_list.yaml', 'report' => 'config_list_report.yaml'];
     public $formConfig = 'config_form.yaml';
     public $relationConfig = 'config_relation.yaml';
 
@@ -19,5 +19,12 @@ class Advertisements extends Controller
     {
         parent::__construct();
         BackendMenu::setContext('recipe.Recipe', 'ads', 'advertisement');
+    }
+
+    public function report() {
+        BackendMenu::setContext('recipe.Recipe', 'ads', 'report');
+        $this->pageTitle = 'Ads Report';
+        $this->bodyClass = 'slim-container';
+        $this->vars['reportWidget'] = $this->asExtension('ListController')->makeList('report');
     }
 }
