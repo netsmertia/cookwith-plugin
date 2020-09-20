@@ -39,6 +39,5 @@ class SeedRecipeImages extends Seeder
                 $recipe->img()->add($imageModel);
             }
         }
-        debug($imgs);
     }
 }

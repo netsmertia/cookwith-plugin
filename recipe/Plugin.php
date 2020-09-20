@@ -85,7 +85,6 @@ class Plugin extends PluginBase
             return $url;
         }
         preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
-        debug($url);
         $youtube_id = $match[1];
         return $youtube_id;
     }

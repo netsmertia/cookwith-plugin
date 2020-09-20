@@ -110,7 +110,6 @@ class Recipes extends ComponentBase
         // $recipes = $recipes->select('id', 'title', 'slug', 'rating', 'created_at', 'serve', 'time', 'content');
 
         if ($this->property('per_page')) {
-            debug( $recipes->paginate($this->property('per_page')));
             return $recipes->paginate($this->property('per_page'));
         }
         return $recipes->get();
