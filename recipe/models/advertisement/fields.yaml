@@ -35,18 +35,18 @@ fields:
         span: auto
         placeholder: 'Url to navigate on clicking on Ad'
         type: text
-    start_date:
-        label: Ad Start Date
-        type: datepicker
-        comment: leave blank to start any date
-        mode: date
-        span: auto
-    end_date:
-        label: Ad End Date
-        type: datepicker
-        comment: leave blank to never end
-        mode: date
-        span: auto
+    # start_date:
+    #     label: Ad Start Date
+    #     type: datepicker
+    #     comment: leave blank to start any date
+    #     mode: date
+    #     span: auto
+    # end_date:
+    #     label: Ad End Date
+    #     type: datepicker
+    #     comment: leave blank to never end
+    #     mode: date
+    #     span: auto
 tabs:
     fields:
         image:
