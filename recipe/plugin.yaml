@@ -27,9 +27,15 @@ navigation:
                     - categories_view
     ads:
         label: 'Ads'
-        url: recipe/recipe/advertisements
+        url: recipe/recipe/advertisements/report
         icon: icon-briefcase
         sideMenu:
+            report:
+                label: Report
+                url: recipe/recipe/advertisements/report
+                icon: icon-dashboard
+                permissions:
+                    - manage_ads
             advertisement:
                 label: 'recipe.recipe::lang.advertisement'
                 url: recipe/recipe/advertisements
@@ -40,12 +46,6 @@ navigation:
                 label: 'recipe.recipe::lang.advertisements.adspace'
                 url: recipe/recipe/adspaces
                 icon: icon-sitemap
-                permissions:
-                    - manage_ads
-            report:
-                label: Report
-                url: recipe/recipe/advertisements/report
-                icon: icon-dashboard
                 permissions:
                     - manage_ads
 permissions:
