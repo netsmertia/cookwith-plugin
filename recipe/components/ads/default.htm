@@ -6,7 +6,7 @@
 	{% set ad  =  adSpace.ads.sortBy('updated_at').first() %}
 {% endif %}
 {% if adSpace %}
-	<a href="ad-target?ad_id={{ad.id}}&space_id={{adSpace.id}}&target={{ad.url}}" class="ads" data-ads-id="{{ad.id}}" data-space-id="{{adSpace.id}}">
+	<a href="/ad-target?ad_id={{ad.id}}&space_id={{adSpace.id}}&target={{ad.url}}" class="ads" data-ads-id="{{ad.id}}" data-space-id="{{adSpace.id}}">
 	{% if adSpace.space_type == 'V' %}
 		{% partial 'ad-vertical' ad = ad %}
 	{% elseif adSpace.space_type == 'B' %}
